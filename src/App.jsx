@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import travelTixLogo from "./assets/travelTix.png";
+import travelTixLogo from "./assets/TravelTix-logo.png";
 
 /* ── BRAND TOKENS ── */
 const C = {
@@ -65,14 +65,13 @@ const WavyPattern = ({ color = C.or, height = 200, bg = C.navy }) => (
   </div>
 );
 
-const LogoMark = ({ size = 34 }) => (
+const LogoMark = ({ size = 90 }) => (
   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
     <div
       style={{
-        background: "rgb(242, 92, 39)",
         borderRadius: 8,
-        padding: "4px 8px",
-        boxShadow: "0 8px 22px rgba(2,28,65,.25)",
+        padding: "6px 14px",
+        // boxShadow: "0 8px 22px rgba(2,28,65,.25)",
         display: "flex",
         alignItems: "center",
       }}
@@ -80,7 +79,7 @@ const LogoMark = ({ size = 34 }) => (
       <img
         src={travelTixLogo}
         alt="Traveltix"
-        style={{ width: size * 2.8, height: size, objectFit: "contain", display: "block" }}
+        style={{ width: size * 3.6, height: size, objectFit: "contain", display: "block" }}
       />
     </div>
   </div>
