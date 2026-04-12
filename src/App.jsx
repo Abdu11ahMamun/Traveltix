@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import travelTixLogo from "./assets/travelTix.png";
 
 /* ── BRAND TOKENS ── */
 const C = {
@@ -66,12 +67,22 @@ const WavyPattern = ({ color = C.or, height = 200, bg = C.navy }) => (
 
 const LogoMark = ({ size = 34 }) => (
   <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-    <div style={{ width: size, height: size, background: C.or, borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-      <svg width={size * .58} height={size * .58} viewBox="0 0 24 24" fill="#fff">
-        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" />
-      </svg>
+    <div
+      style={{
+        background: "rgb(242, 92, 39)",
+        borderRadius: 8,
+        padding: "4px 8px",
+        boxShadow: "0 8px 22px rgba(2,28,65,.25)",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <img
+        src={travelTixLogo}
+        alt="Traveltix"
+        style={{ width: size * 2.8, height: size, objectFit: "contain", display: "block" }}
+      />
     </div>
-    <span style={{ fontFamily: "'Anybody',sans-serif", fontSize: size * .65, fontWeight: 900, color: "#fff" }}>Travel<em style={{ color: C.or, fontStyle: "normal" }}>tix</em></span>
   </div>
 );
 
