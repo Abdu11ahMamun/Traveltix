@@ -84,7 +84,7 @@ const Nav = ({ page, setPage }) => {
     window.addEventListener("scroll", h);
     return () => window.removeEventListener("scroll", h);
   }, []);
-  const links = ["Home", "Destinations", "Services", "About", "Blog", "Career"];
+  const links = ["Home", "Destinations", "Services", "About", "Career"];
   return (
     <nav style={{ position: "fixed", top: 0, width: "100%", zIndex: 999, padding: "0 60px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", transition: "all .4s", background: scrolled ? "rgba(2,28,65,.96)" : "transparent", boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,.28)" : "none" }}>
       <div onClick={() => setPage("Home")} style={{ cursor: "pointer" }}><LogoMark /></div>
@@ -97,7 +97,7 @@ const Nav = ({ page, setPage }) => {
           </li>
         ))}
       </ul>
-      <BtnOr style={{ fontSize: 11, padding: "9px 20px" }}>Book a Trip</BtnOr>
+      <div />
     </nav>
   );
 };
@@ -182,7 +182,7 @@ const BrandTone = () => {
 /* ── FOOTER ── */
 const Footer = ({ setPage }) => (
   <footer style={{ background: C.dark, padding: "64px 60px 26px" }}>
-    <div style={{ display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr 1.6fr", gap: 46, marginBottom: 46 }}>
+    <div style={{ display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr", gap: 46, marginBottom: 46 }}>
       <div>
         <div onClick={() => setPage("Home")} style={{ cursor: "pointer", marginBottom: 14 }}><LogoMark /></div>
         <p style={{ fontSize: 13, color: "rgba(255,255,255,.38)", lineHeight: 1.9, maxWidth: 268 }}>Your trusted travel partner from visa to destination — making journeys smooth, well-planned and memorable since 2012.</p>
@@ -199,7 +199,7 @@ const Footer = ({ setPage }) => (
       <div>
         <h5 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 13, fontWeight: 800, marginBottom: 18, textTransform: "uppercase" }}>Pages</h5>
         <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: 10 }}>
-          {["Home", "Destinations", "Services", "About", "Blog", "Career"].map(l => (
+          {["Home", "Destinations", "Services", "About", "Career"].map(l => (
             <li key={l}><span onClick={() => setPage(l)} style={{ fontSize: 13, color: "rgba(255,255,255,.38)", cursor: "pointer", transition: "color .2s" }}
               onMouseEnter={e => e.currentTarget.style.color = C.or}
               onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,.38)"}>{l}</span></li>
@@ -227,14 +227,6 @@ const Footer = ({ setPage }) => (
               )}
             </div>
           ))}
-        </div>
-      </div>
-      <div>
-        <h5 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 13, fontWeight: 800, marginBottom: 18, textTransform: "uppercase" }}>Newsletter</h5>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,.38)", lineHeight: 1.8, marginBottom: 14 }}>Subscribe for exclusive travel deals and early-bird offers.</p>
-        <div style={{ display: "flex", background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.1)", borderRadius: 6, overflow: "hidden" }}>
-          <input placeholder="Your email address" style={{ flex: 1, background: "transparent", border: "none", padding: "11px 14px", color: "#fff", fontSize: 12, outline: "none" }} />
-          <button style={{ background: C.or, color: "#fff", border: "none", fontFamily: "'Anybody',sans-serif", fontSize: 11, fontWeight: 800, padding: "9px 14px", margin: 3, borderRadius: 4, cursor: "pointer", textTransform: "uppercase", letterSpacing: ".5px" }}>Sign Up</button>
         </div>
       </div>
     </div>
@@ -268,11 +260,6 @@ const HomePage = ({ setPage }) => {
     { n: "04", icon: "👥", t: "Group Tours", p: "Tailored packages for families, friends, and corporate teams — fully managed." },
     { n: "05", icon: "🗺", t: "Custom Itineraries", p: "No cookie-cutter tours. Every trip built around your pace, passions, and budget." },
     { n: "06", icon: "🕐", t: "24/7 Support", p: "Round-the-clock assistance before, during, and after your journey." },
-  ];
-  const blogs = [
-    { img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=900&q=80&auto=format&fit=crop", tag: "Travel Tips", date: "Mar 28, 2025", title: "10 Must-Visit Hidden Gems in Southeast Asia", body: "From misty mountain villages to secret lagoons — places most tourists simply never find.", main: true },
-    { img: "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=600&q=80&auto=format&fit=crop", tag: "Culture", date: "Mar 20", title: "Temple Etiquette Guide Across Asia", body: "Respect local customs and make the most of sacred site visits." },
-    { img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80&auto=format&fit=crop", tag: "Budget", date: "Mar 12", title: "How to Travel Asia on $60 a Day", body: "Budget doesn't mean boring — your complete affordable Asia guide." },
   ];
   return (
     <div>
@@ -435,37 +422,6 @@ const HomePage = ({ setPage }) => {
       <BrandTone />
       <WavyPattern color={C.sun} bg={C.lace} height={180} />
 
-      {/* TESTIMONIALS */}
-      <Sec2>
-        <div style={{ textAlign: "center", marginBottom: 50 }}>
-          <Eyebrow txt="Client Reviews" center />
-          <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy, marginTop: 10 }}>What Our Travelers Say</h2>
-          <p style={{ color: "#5a6a7a", fontSize: 14, marginTop: 10, maxWidth: 400, marginInline: "auto", lineHeight: 1.85 }}>Real stories from real travelers who trusted Traveltix</p>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
-          {[
-            { init: "RF", bg: C.or, color: "#fff", name: "Roy Franklin", role: "Adventure Traveler, USA", text: "The Bali trip was beyond magical. Traveltix handled everything from visa to morning transfers. Every detail was flawless — I just showed up and enjoyed!" },
-            { init: "GH", bg: C.navy, color: "#fff", name: "Gary Howard", role: "Family Traveler, UK", text: "Traveltix's personal touch is unmatched. The Thailand family tour was perfectly managed — the kids still talk about it months later!" },
-            { init: "LD", bg: C.sky, color: C.navy, name: "Louna Daniel", role: "Solo Traveler, France", text: "Cappadocia at sunrise in a hot air balloon — Traveltix made it happen seamlessly. Clear communication, honest pricing, zero stress." },
-          ].map((t, i) => (
-            <div key={i} style={{ background: C.lace, borderRadius: 12, padding: 26, border: `1px solid rgba(2,28,65,.06)`, transition: "all .3s", position: "relative" }}
-              onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 14px 40px rgba(2,28,65,.1)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
-              onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
-              <div style={{ fontFamily: "Georgia,serif", fontSize: 52, color: "rgba(242,92,39,.2)", lineHeight: .7, marginBottom: 10 }}>"</div>
-              <div style={{ color: C.or, fontSize: 13, letterSpacing: 2, marginBottom: 12 }}>★★★★★</div>
-              <p style={{ fontSize: 13, color: "#5a6a7a", lineHeight: 1.85, fontStyle: "italic", marginBottom: 20 }}>{t.text}</p>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, paddingTop: 16, borderTop: "1px solid rgba(2,28,65,.07)" }}>
-                <div style={{ width: 40, height: 40, borderRadius: "50%", background: t.bg, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Anybody',sans-serif", color: t.color, fontWeight: 900, fontSize: 13 }}>{t.init}</div>
-                <div>
-                  <h5 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 13, fontWeight: 800, color: C.navy }}>{t.name}</h5>
-                  <span style={{ fontSize: 11, color: "#94a3b8" }}>{t.role}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Sec2>
-
       {/* KEY MESSAGE */}
       <section style={{ background: C.navy, padding: "96px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         <div>
@@ -486,47 +442,6 @@ const HomePage = ({ setPage }) => {
           </div>
         </div>
       </section>
-
-      {/* BLOG */}
-      <Sec2>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 46 }}>
-          <div><Eyebrow txt="Travel Journal" /><h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy }}>Latest Tips & <em style={{ color: C.or, fontStyle: "normal" }}>Stories</em></h2></div>
-          <span onClick={() => setPage("Blog")} style={{ fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 800, color: C.or, borderBottom: `1.5px solid ${C.or}`, paddingBottom: 2, cursor: "pointer", textTransform: "uppercase" }}>All Articles →</span>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1.5fr 1fr 1fr", gap: 20 }}>
-          <div style={{ borderRadius: 12, overflow: "hidden", background: C.lace, border: `1px solid rgba(2,28,65,.06)`, transition: "all .3s" }}
-            onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 10px 32px rgba(2,28,65,.1)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-            onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
-            <img src={blogs[0].img} alt="" style={{ width: "100%", height: 260, objectFit: "cover" }} />
-            <div style={{ padding: 20 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                <span style={{ background: C.or, color: "#fff", fontFamily: "'Anybody',sans-serif", fontSize: 9, fontWeight: 800, padding: "3px 9px", borderRadius: 3, textTransform: "uppercase", letterSpacing: "1.5px" }}>{blogs[0].tag}</span>
-                <span style={{ color: "#94a3b8", fontSize: 11 }}>{blogs[0].date}</span>
-              </div>
-              <h4 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 19, fontWeight: 900, color: C.navy, marginBottom: 7, lineHeight: 1.3 }}>{blogs[0].title}</h4>
-              <p style={{ fontSize: 13, color: "#5a6a7a", lineHeight: 1.75 }}>{blogs[0].body}</p>
-              <span style={{ fontFamily: "'Anybody',sans-serif", fontSize: 11, fontWeight: 800, color: C.or, display: "inline-flex", alignItems: "center", gap: 4, marginTop: 10, textTransform: "uppercase", letterSpacing: ".5px", cursor: "pointer" }}>Read Full Story →</span>
-            </div>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-            {blogs.slice(1).map((b, i) => (
-              <div key={i} style={{ borderRadius: 12, overflow: "hidden", background: C.lace, border: `1px solid rgba(2,28,65,.06)`, transition: "all .3s" }}
-                onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 8px 24px rgba(2,28,65,.1)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
-                <img src={b.img} alt="" style={{ width: "100%", height: 155, objectFit: "cover" }} />
-                <div style={{ padding: 18 }}>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                    <span style={{ background: C.or, color: "#fff", fontFamily: "'Anybody',sans-serif", fontSize: 9, fontWeight: 800, padding: "3px 9px", borderRadius: 3, textTransform: "uppercase" }}>{b.tag}</span>
-                    <span style={{ color: "#94a3b8", fontSize: 11 }}>{b.date}</span>
-                  </div>
-                  <h4 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 14, fontWeight: 900, color: C.navy, marginBottom: 5, lineHeight: 1.3 }}>{b.title}</h4>
-                  <p style={{ fontSize: 12, color: "#5a6a7a", lineHeight: 1.7 }}>{b.body}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Sec2>
 
       {/* CTA */}
       <section style={{ position: "relative", padding: "108px 60px", textAlign: "center", overflow: "hidden" }}>
@@ -704,28 +619,6 @@ const AboutPage = () => (
       </div>
     </Sec2>
     <BrandTone />
-    <Sec2 bg={C.white}>
-      <div style={{ textAlign: "center", marginBottom: 52 }}>
-        <Eyebrow txt="Our Team" center />
-        <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy, marginTop: 10 }}>Meet the <em style={{ color: C.or, fontStyle: "normal" }}>People</em></h2>
-      </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 22 }}>
-        {[
-          { name: "Rahim Uddin", role: "CEO & Founder", init: "RU" },
-          { name: "Nadia Hossain", role: "Head of Operations", init: "NH" },
-          { name: "Arif Chowdhury", role: "Lead Travel Advisor", init: "AC" },
-          { name: "Sadia Islam", role: "Visa Specialist", init: "SI" },
-        ].map((m, i) => (
-          <div key={i} style={{ background: C.lace, borderRadius: 14, padding: "32px 24px", textAlign: "center", border: "1px solid rgba(2,28,65,.07)", transition: "all .3s" }}
-            onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 36px rgba(2,28,65,.1)"; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
-            <div style={{ width: 72, height: 72, borderRadius: "50%", background: i % 2 === 0 ? C.or : C.navy, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "'Anybody',sans-serif", color: "#fff", fontWeight: 900, fontSize: 22, margin: "0 auto 16px" }}>{m.init}</div>
-            <h4 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 16, fontWeight: 800, color: C.navy, marginBottom: 4 }}>{m.name}</h4>
-            <p style={{ fontSize: 12, color: "#94a3b8" }}>{m.role}</p>
-          </div>
-        ))}
-      </div>
-    </Sec2>
     <Sec2 bg={C.lace}>
       <div style={{ textAlign: "center", marginBottom: 48 }}>
         <Eyebrow txt="Find Us" center />
@@ -749,89 +642,11 @@ const AboutPage = () => (
 );
 
 /* ═══════════════════════════════════════════════
-   PAGE: BLOG
-═══════════════════════════════════════════════ */
-const BlogPage = () => {
-  const posts = [
-    { img: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80&auto=format&fit=crop", tag: "Travel Tips", date: "March 28, 2025", title: "10 Must-Visit Hidden Gems in Southeast Asia", body: "From misty mountain villages in northern Vietnam to secret lagoons in the Philippines, discover places most tourists simply never find.", featured: true },
-    { img: "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=800&q=80&auto=format&fit=crop", tag: "Culture", date: "March 20, 2025", title: "Complete Temple Etiquette Guide Across Asia", body: "Respect local customs and make the most of every sacred site visit. Essential tips for every traveler." },
-    { img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&q=80&auto=format&fit=crop", tag: "Budget Travel", date: "March 12, 2025", title: "How to Travel Asia Comfortably on $60 a Day", body: "Budget doesn't mean boring — your complete guide to affordable Asian adventures without compromising on experience." },
-    { img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80&auto=format&fit=crop", tag: "Destinations", date: "March 5, 2025", title: "Why Japan Should Be Your Next Travel Destination", body: "From cherry blossoms to ramen, there's no place on Earth quite like Japan. Here's your complete beginner's guide." },
-    { img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80&auto=format&fit=crop", tag: "Indonesia", date: "Feb 22, 2025", title: "Bali Beyond the Tourist Trail: Hidden Treasures", body: "Skip the crowds and discover the real Bali — from rice terraces to secret waterfalls only locals know about." },
-    { img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80&auto=format&fit=crop", tag: "Luxury", date: "Feb 15, 2025", title: "Maldives on a Budget: Is It Really Possible?", body: "Yes! We break down how to experience the magic of the Maldives without spending a fortune. Real tips, real savings." },
-  ];
-  return (
-    <div>
-      <div style={{ background: C.navy, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
-        <WavyPattern color={C.or} height={300} bg="transparent" />
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <Eyebrow txt="Travel Journal" light />
-          <h1 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 60, fontWeight: 900, marginBottom: 14 }}>Tips, Stories &<br /><em style={{ color: C.or, fontStyle: "normal" }}>Inspiration</em></h1>
-          <p style={{ color: "rgba(255,255,255,.6)", fontSize: 15, maxWidth: 500, lineHeight: 1.85 }}>Expert travel advice, destination guides, and stories from our community of explorers.</p>
-        </div>
-      </div>
-      <Sec2 bg={C.lace}>
-        {/* Featured */}
-        <div style={{ borderRadius: 16, overflow: "hidden", background: "#fff", border: "1px solid rgba(2,28,65,.07)", display: "grid", gridTemplateColumns: "1.2fr 1fr", marginBottom: 40, transition: "all .3s" }}
-          onMouseEnter={e => { e.currentTarget.style.boxShadow = "0 16px 48px rgba(2,28,65,.12)"; e.currentTarget.style.transform = "translateY(-3px)"; }}
-          onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
-          <img src={posts[0].img} alt="" style={{ width: "100%", height: 360, objectFit: "cover" }} />
-          <div style={{ padding: 40, display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 16 }}>
-              <span style={{ background: C.or, color: "#fff", fontFamily: "'Anybody',sans-serif", fontSize: 9, fontWeight: 800, padding: "4px 12px", borderRadius: 4, textTransform: "uppercase", letterSpacing: "1.5px" }}>{posts[0].tag}</span>
-              <span style={{ color: "#94a3b8", fontSize: 12 }}>{posts[0].date}</span>
-            </div>
-            <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 26, fontWeight: 900, color: C.navy, marginBottom: 14, lineHeight: 1.2 }}>{posts[0].title}</h2>
-            <p style={{ fontSize: 14, color: "#5a6a7a", lineHeight: 1.8, marginBottom: 24 }}>{posts[0].body}</p>
-            <BtnOr style={{ alignSelf: "flex-start" }}>Read Article →</BtnOr>
-          </div>
-        </div>
-        {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
-          {posts.slice(1).map((p, i) => (
-            <div key={i} style={{ borderRadius: 12, overflow: "hidden", background: "#fff", border: "1px solid rgba(2,28,65,.07)", transition: "all .3s" }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 36px rgba(2,28,65,.1)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
-              <img src={p.img} alt="" style={{ width: "100%", height: 200, objectFit: "cover" }} />
-              <div style={{ padding: 20 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                  <span style={{ background: C.or, color: "#fff", fontFamily: "'Anybody',sans-serif", fontSize: 9, fontWeight: 800, padding: "3px 9px", borderRadius: 3, textTransform: "uppercase" }}>{p.tag}</span>
-                  <span style={{ color: "#94a3b8", fontSize: 11 }}>{p.date}</span>
-                </div>
-                <h4 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 16, fontWeight: 900, color: C.navy, marginBottom: 8, lineHeight: 1.3 }}>{p.title}</h4>
-                <p style={{ fontSize: 13, color: "#5a6a7a", lineHeight: 1.75, marginBottom: 14 }}>{p.body}</p>
-                <span style={{ fontFamily: "'Anybody',sans-serif", fontSize: 11, fontWeight: 800, color: C.or, cursor: "pointer", textTransform: "uppercase", letterSpacing: ".5px" }}>Read More →</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Sec2>
-    </div>
-  );
-};
-
-/* ═══════════════════════════════════════════════
    PAGE: CAREER
 ═══════════════════════════════════════════════ */
 const CareerPage = () => {
   const [applied, setApplied] = useState(null);
   const [form, setForm] = useState({ name: "", email: "", phone: "", position: "", cover: "" });
-  const jobs = [
-    { title: "Senior Travel Consultant", dept: "Operations", type: "Full-time", loc: "Dhanmondi, Dhaka", exp: "3-5 years", desc: "Lead client consultations, craft bespoke itineraries, and manage relationships for premium travel packages across Asia." },
-    { title: "Visa Processing Specialist", dept: "Visa & Documentation", type: "Full-time", loc: "Dhanmondi, Dhaka", exp: "2-4 years", desc: "Handle visa applications across multiple countries, maintain documentation accuracy, and liaise with embassies." },
-    { title: "Digital Marketing Executive", dept: "Marketing", type: "Full-time", loc: "Dhanmondi, Dhaka", exp: "2-3 years", desc: "Drive Traveltix's social media presence, manage campaigns, and create engaging content for our travel-loving audience." },
-    { title: "Customer Support Executive", dept: "Support", type: "Full-time", loc: "Dhanmondi, Dhaka", exp: "1-2 years", desc: "Provide exceptional 24/7 support to travelers before, during, and after their trips with empathy and expertise." },
-    { title: "Travel Content Writer", dept: "Marketing", type: "Part-time / Remote", loc: "Remote", exp: "1-2 years", desc: "Create compelling travel guides, blog posts, and destination content that inspires our audience to explore Asia." },
-    { title: "Business Development Executive", dept: "Sales", type: "Full-time", loc: "Dhanmondi, Dhaka", exp: "2-4 years", desc: "Build corporate client relationships, develop B2B travel packages, and expand Traveltix's market footprint." },
-  ];
-  const perks = [
-    { icon: "✈", t: "Free Travel Perks", p: "Annual travel allowance + discounted packages for all team members" },
-    { icon: "📈", t: "Career Growth", p: "Clear promotion pathways and mentorship from industry leaders" },
-    { icon: "🏥", t: "Health Benefits", p: "Comprehensive health insurance covering you and your family" },
-    { icon: "🕐", t: "Flexible Hours", p: "Hybrid work model with flexible scheduling options" },
-    { icon: "🎓", t: "Learning Budget", p: "Annual L&D budget for courses, certifications and conferences" },
-    { icon: "🎉", t: "Team Culture", p: "Vibrant team events, retreats, and a genuinely supportive environment" },
-  ];
   const handleSubmit = (jobTitle) => {
     setApplied(jobTitle);
     setTimeout(() => setApplied(null), 4000);
@@ -860,47 +675,7 @@ const CareerPage = () => {
         </div>
       </div>
 
-      {/* PERKS */}
-      <Sec2 bg={C.lace}>
-        <div style={{ textAlign: "center", marginBottom: 52 }}>
-          <Eyebrow txt="Why Work With Us" center />
-          <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy, marginTop: 10 }}>Perks & <em style={{ color: C.or, fontStyle: "normal" }}>Benefits</em></h2>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
-          {perks.map((p, i) => (
-            <div key={i} style={{ background: "#fff", borderRadius: 12, padding: "28px 24px", border: "1px solid rgba(2,28,65,.07)", display: "flex", gap: 16, alignItems: "flex-start", transition: "all .3s" }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 12px 36px rgba(2,28,65,.1)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "none"; }}>
-              <div style={{ width: 48, height: 48, background: "rgba(242,92,39,.1)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>{p.icon}</div>
-              <div>
-                <h4 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 15, fontWeight: 800, color: C.navy, marginBottom: 6 }}>{p.t}</h4>
-                <p style={{ fontSize: 13, color: "#5a6a7a", lineHeight: 1.75 }}>{p.p}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Sec2>
-
-      {/* JOB LISTINGS */}
-      <Sec2 bg={C.white}>
-        <div style={{ marginBottom: 48 }}>
-          <Eyebrow txt="Open Roles" />
-          <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy }}>Current <em style={{ color: C.or, fontStyle: "normal" }}>Openings</em></h2>
-        </div>
-        {applied && (
-          <div style={{ background: "rgba(22,163,74,.1)", border: "1.5px solid rgba(22,163,74,.3)", borderRadius: 10, padding: "16px 24px", marginBottom: 28, display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 18 }}>✅</span>
-            <p style={{ fontFamily: "'Anybody',sans-serif", fontSize: 14, fontWeight: 700, color: "#16a34a" }}>Application submitted for <strong>{applied}</strong>! We'll get back to you at <strong>{form.email || "your email"}</strong> within 3 business days.</p>
-          </div>
-        )}
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {jobs.map((j, i) => (
-            <JobCard key={i} job={j} form={form} setForm={setForm} onApply={handleSubmit} />
-          ))}
-        </div>
-      </Sec2>
-
-      {/* APPLICATION FORM */}
+      {/* APPLICATION */}
       <Sec2 bg={C.navy}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }}>
           <div>
@@ -925,6 +700,12 @@ const CareerPage = () => {
           </div>
           <div style={{ background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.1)", borderRadius: 14, padding: "36px 32px" }}>
             <h4 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 20, fontWeight: 800, marginBottom: 24 }}>General Application</h4>
+            {applied && (
+              <div style={{ background: "rgba(22,163,74,.1)", border: "1.5px solid rgba(22,163,74,.3)", borderRadius: 10, padding: "12px 16px", marginBottom: 20, display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontSize: 16 }}>✅</span>
+                <p style={{ fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 700, color: "#16a34a" }}>Application submitted! We'll get back to you at <strong>{form.email || "your email"}</strong> within 3 business days.</p>
+              </div>
+            )}
             {[
               { label: "Full Name", key: "name", type: "text", ph: "Your full name" },
               { label: "Email Address", key: "email", type: "email", ph: "your@email.com" },
@@ -942,60 +723,10 @@ const CareerPage = () => {
               <textarea placeholder="Tell us about yourself and why you'd like to join Traveltix..." value={form.cover} onChange={e => setForm({ ...form, cover: e.target.value })} rows={4}
                 style={{ width: "100%", background: "rgba(255,255,255,.07)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 7, padding: "11px 14px", color: "#fff", fontSize: 13, outline: "none", resize: "vertical" }} />
             </div>
-            <BtnOr style={{ width: "100%", justifyContent: "center", fontSize: 13, padding: "14px" }} onClick={() => handleSubmit(form.position || "General Application")}>Submit Application</BtnOr>
+            <BtnOr style={{ width: "100%", justifyContent: "center", fontSize: 13, padding: "14px" }} onClick={() => handleSubmit("General Application")}>Submit Application</BtnOr>
           </div>
         </div>
       </Sec2>
-    </div>
-  );
-};
-
-const JobCard = ({ job, form, setForm, onApply }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div style={{ background: C.lace, borderRadius: 12, border: `1px solid ${open ? C.or : "rgba(2,28,65,.08)"}`, overflow: "hidden", transition: "border-color .3s" }}>
-      <div onClick={() => setOpen(!open)} style={{ padding: "24px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div>
-            <h4 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 17, fontWeight: 900, color: C.navy, marginBottom: 6 }}>{job.title}</h4>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {[job.dept, job.type, `📍 ${job.loc}`, `${job.exp} exp.`].map((t, i) => (
-                <span key={i} style={{ background: i === 0 ? "rgba(242,92,39,.12)" : "#fff", color: i === 0 ? C.or : "#5a6a7a", fontFamily: "'Anybody',sans-serif", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 4, border: "1px solid rgba(2,28,65,.08)", textTransform: "uppercase", letterSpacing: ".8px" }}>{t}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <BtnOr style={{ fontSize: 11, padding: "8px 18px" }}>Apply Now</BtnOr>
-          <span style={{ fontFamily: "'Anybody',sans-serif", fontSize: 20, color: C.or, transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform .3s" }}>▾</span>
-        </div>
-      </div>
-      {open && (
-        <div style={{ padding: "0 28px 28px", borderTop: "1px solid rgba(2,28,65,.08)" }}>
-          <p style={{ fontSize: 14, color: "#5a6a7a", lineHeight: 1.85, margin: "20px 0 24px" }}>{job.desc}</p>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12 }}>
-            {[
-              { label: "Your Name", key: "name", type: "text", ph: "Full name" },
-              { label: "Email Address", key: "email", type: "email", ph: "your@email.com" },
-              { label: "Phone Number", key: "phone", type: "tel", ph: "+880 XXXX XXXXXX" },
-            ].map(f => (
-              <div key={f.key}>
-                <label style={{ fontFamily: "'Anybody',sans-serif", color: C.navy, fontSize: 11, fontWeight: 700, display: "block", marginBottom: 5, textTransform: "uppercase", letterSpacing: ".5px" }}>{f.label}</label>
-                <input type={f.type} placeholder={f.ph} value={form[f.key]} onChange={e => setForm({ ...form, [f.key]: e.target.value })}
-                  style={{ width: "100%", background: "#fff", border: "1.5px solid rgba(2,28,65,.15)", borderRadius: 7, padding: "10px 12px", color: C.navy, fontSize: 13, outline: "none" }} />
-              </div>
-            ))}
-          </div>
-          <div style={{ marginTop: 12 }}>
-            <label style={{ fontFamily: "'Anybody',sans-serif", color: C.navy, fontSize: 11, fontWeight: 700, display: "block", marginBottom: 5, textTransform: "uppercase", letterSpacing: ".5px" }}>Why are you a great fit?</label>
-            <textarea placeholder={`Tell us why you're perfect for the ${job.title} role...`} value={form.cover} onChange={e => setForm({ ...form, cover: e.target.value })} rows={3}
-              style={{ width: "100%", background: "#fff", border: "1.5px solid rgba(2,28,65,.15)", borderRadius: 7, padding: "10px 12px", color: C.navy, fontSize: 13, outline: "none", resize: "vertical" }} />
-          </div>
-          <div style={{ marginTop: 16 }}>
-            <BtnOr onClick={() => { onApply(job.title); setOpen(false); }}>Submit Application for {job.title} →</BtnOr>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
@@ -1006,7 +737,7 @@ const JobCard = ({ job, form, setForm, onApply }) => {
 export default function App() {
   const [page, setPage] = useState("Home");
   useEffect(() => { window.scrollTo(0, 0); }, [page]);
-  const pages = { Home: <HomePage setPage={setPage} />, Destinations: <DestinationsPage />, Services: <ServicesPage />, About: <AboutPage />, Blog: <BlogPage />, Career: <CareerPage /> };
+  const pages = { Home: <HomePage setPage={setPage} />, Destinations: <DestinationsPage />, Services: <ServicesPage />, About: <AboutPage />, Career: <CareerPage /> };
   return (
     <div style={{ fontFamily: "'Epilogue',sans-serif", background: C.white }}>
       <FontStyle />
