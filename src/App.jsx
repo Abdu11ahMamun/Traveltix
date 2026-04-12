@@ -123,7 +123,7 @@ const Marquee = () => {
 const countryData = [
   { name: "Indonesia", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1600&q=80&auto=format&fit=crop" },
   { name: "Thailand", img: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=1600&q=80&auto=format&fit=crop" },
-  { name: "Turkey", img: "https://images.unsplash.com/photo-1570447026890-40e38cfa55fd?w=1600&q=80&auto=format&fit=crop" },
+  { name: "Turkey", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=1600&q=80&auto=format&fit=crop" },
   { name: "Japan", img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1600&q=80&auto=format&fit=crop" },
   { name: "Singapore", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=80&auto=format&fit=crop" },
   { name: "Malaysia", img: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1600&q=80&auto=format&fit=crop" },
@@ -250,7 +250,7 @@ const HomePage = ({ setPage }) => {
   const destCards = [
     { img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900&q=80&auto=format&fit=crop", cat: "Indonesia", name: "Kelingking Beach", sub: "Nusa Penida, Bali", tall: true },
     { img: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=900&q=80&auto=format&fit=crop", cat: "Thailand", name: "Grand Palace", sub: "Bangkok, Thailand" },
-    { img: "https://images.unsplash.com/photo-1570447026890-40e38cfa55fd?w=900&q=80&auto=format&fit=crop", cat: "Turkey", name: "Cappadocia", sub: "Central Anatolia" },
+    { img: "https://images.unsplash.com/photo-1549396535-c11d5c55b9df?w=900&q=80&auto=format&fit=crop", cat: "Turkey", name: "Cappadocia", sub: "Central Anatolia" },
     { img: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=1400&q=80&auto=format&fit=crop", cat: "Indonesia", name: "Padar Island", sub: "East Nusa Tenggara", wide: true },
   ];
   const features = [
@@ -469,7 +469,7 @@ const DestinationsPage = () => {
     { img: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80&auto=format&fit=crop", cat: "Indonesia", name: "Padar Island", sub: "East Nusa Tenggara", price: "$749" },
     { img: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&q=80&auto=format&fit=crop", cat: "Thailand", name: "Phi Phi Islands", sub: "Krabi, Thailand", price: "$699" },
     { img: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=800&q=80&auto=format&fit=crop", cat: "Thailand", name: "Grand Palace", sub: "Bangkok, Thailand", price: "$599" },
-    { img: "https://images.unsplash.com/photo-1570447026890-40e38cfa55fd?w=800&q=80&auto=format&fit=crop", cat: "Turkey", name: "Cappadocia Balloons", sub: "Central Anatolia", price: "$1,099" },
+    { img: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=800&q=80&auto=format&fit=crop", cat: "Turkey", name: "Cappadocia Balloons", sub: "Central Anatolia", price: "$1,099" },
     { img: "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=800&q=80&auto=format&fit=crop", cat: "Turkey", name: "Pamukkale", sub: "Denizli, Turkey", price: "$799" },
     { img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80&auto=format&fit=crop", cat: "Japan", name: "Kyoto Temples", sub: "Kyoto, Japan", price: "$1,299" },
     { img: "https://images.unsplash.com/photo-1480796927426-f609979314bd?w=800&q=80&auto=format&fit=crop", cat: "Japan", name: "Tokyo City", sub: "Tokyo, Japan", price: "$1,199" },
