@@ -36,8 +36,10 @@ const Eyebrow = ({ txt, light = false, center = false }) => (
   </div>
 );
 
-const Sec2 = ({ children, bg = C.white, style = {} }) => (
-  <section style={{ padding: "88px 60px", background: bg, ...style }}>{children}</section>
+const Sec2 = ({ children, bg = C.white, style = {}, className = "" }) => (
+  <section className={`section ${className}`.trim()} style={{ padding: "88px 60px", background: bg, ...style }}>
+    {children}
+  </section>
 );
 
 const BtnOr = ({ children, href = "#", style = {} }) => (
@@ -66,7 +68,7 @@ const WavyPattern = ({ color = C.or, height = 200, bg = C.navy }) => (
 );
 
 const LogoMark = ({ size = 90 }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+  <div className="logo-mark" style={{ display: "flex", alignItems: "center", gap: 10 }}>
     <div
       style={{
         borderRadius: 8,
@@ -79,6 +81,7 @@ const LogoMark = ({ size = 90 }) => (
       <img
         src={travelTixLogo}
         alt="Traveltix"
+        className="logo-img"
         style={{ width: size * 3.6, height: size, objectFit: "contain", display: "block" }}
       />
     </div>
@@ -96,18 +99,37 @@ const Nav = ({ page, setPage }) => {
   }, []);
   const links = ["Home", "Destinations", "Services", "About", "Career"];
   return (
-    <nav style={{ position: "fixed", top: 0, width: "100%", zIndex: 999, padding: "0 60px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", transition: "all .4s", background: scrolled ? "rgba(2,28,65,.96)" : "transparent", boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,.28)" : "none" }}>
+    <nav className="nav" style={{ position: "fixed", top: 0, width: "100%", zIndex: 999, padding: "0 60px", height: 68, display: "flex", alignItems: "center", justifyContent: "space-between", transition: "all .4s", background: scrolled ? "rgba(2,28,65,.96)" : "transparent", boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,.28)" : "none" }}>
       <div onClick={() => setPage("Home")} style={{ cursor: "pointer" }}><LogoMark /></div>
-      <ul style={{ display: "flex", gap: 28, listStyle: "none" }}>
+      <ul className="nav-links" style={{ display: "flex", gap: 28, listStyle: "none" }}>
         {links.map(l => (
           <li key={l}>
-            <span onClick={() => setPage(l)} style={{ fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: ".8px", textTransform: "uppercase", cursor: "pointer", color: page === l ? "#fff" : "rgba(255,255,255,.68)", borderBottom: page === l ? `2px solid ${C.or}` : "2px solid transparent", paddingBottom: 3, transition: "all .2s" }}>
+            <span className="nav-link" onClick={() => setPage(l)} style={{ fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 700, letterSpacing: ".8px", textTransform: "uppercase", cursor: "pointer", color: page === l ? "#fff" : "rgba(255,255,255,.68)", borderBottom: page === l ? `2px solid ${C.or}` : "2px solid transparent", paddingBottom: 3, transition: "all .2s" }}>
               {l}
             </span>
           </li>
         ))}
       </ul>
-      <div />
+      <button
+        className="nav-toggle"
+        onClick={() => setMobileOpen(o => !o)}
+        aria-label="Toggle navigation"
+        aria-expanded={mobileOpen}
+        style={{ background: "transparent", border: "1px solid rgba(255,255,255,.35)", borderRadius: 8, padding: "8px 10px", color: "#fff", fontSize: 16, cursor: "pointer" }}
+      >
+        {mobileOpen ? "✕" : "☰"}
+      </button>
+      <div className={`nav-drawer ${mobileOpen ? "open" : ""}`}>
+        {links.map(l => (
+          <span
+            key={l}
+            className="nav-drawer-link"
+            onClick={() => { setPage(l); setMobileOpen(false); }}
+          >
+            {l}
+          </span>
+        ))}
+      </div>
     </nav>
   );
 };
@@ -143,17 +165,18 @@ const countryData = [
 const CountryHover = () => {
   const [active, setActive] = useState(0);
   return (
-    <div style={{ position: "relative", height: "88vh", minHeight: 560, overflow: "hidden" }}>
+    <div className="country-hover" style={{ position: "relative", height: "88vh", minHeight: 560, overflow: "hidden" }}>
       {countryData.map((c, i) => (
         <div key={i} style={{ position: "absolute", inset: 0, backgroundImage: `url('${c.img}')`, backgroundSize: "cover", backgroundPosition: "center", opacity: i === active ? 1 : 0, transition: "opacity .65s ease" }} />
       ))}
       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom,rgba(2,28,65,.4),rgba(2,28,65,.18) 50%,rgba(2,28,65,.62) 100%)", zIndex: 1, pointerEvents: "none" }} />
-      <div style={{ position: "relative", zIndex: 2, display: "flex", height: "100%" }}>
+      <div className="country-hover-list" style={{ position: "relative", zIndex: 2, display: "flex", height: "100%" }}>
         {countryData.map((c, i) => (
-          <div key={i} onMouseEnter={() => setActive(i)}
+          <div key={i} onMouseEnter={() => setActive(i)} onClick={() => setActive(i)}
+            className="country-hover-item"
             style={{ flex: i === active ? 2.5 : 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "flex-start", paddingTop: 30, cursor: "pointer", borderRight: i < countryData.length - 1 ? "1px solid rgba(255,255,255,.18)" : "none", transition: "flex .55s cubic-bezier(.4,0,.2,1)", position: "relative", background: i === active ? "rgba(242,92,39,.06)" : "transparent" }}>
             <span style={{ fontFamily: "'Anybody',sans-serif", color: i === active ? "rgba(255,255,255,.9)" : "rgba(255,255,255,.5)", fontSize: 9, fontWeight: 800, letterSpacing: 4, textTransform: "uppercase", marginBottom: 10, transition: "color .3s" }}>Visit</span>
-            <span style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontWeight: 900, opacity: i === active ? 1 : .6, transition: "all .4s", ...(i === active ? { fontSize: 52, writingMode: "horizontal-tb", transform: "none", margin: "auto 0", padding: "0 20px", lineHeight: 1, textShadow: "0 4px 24px rgba(0,0,0,.4)" } : { fontSize: 17, writingMode: "vertical-rl", transform: "rotate(180deg)" }) }}>
+            <span className="country-name" style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontWeight: 900, opacity: i === active ? 1 : .6, transition: "all .4s", ...(i === active ? { fontSize: 52, writingMode: "horizontal-tb", transform: "none", margin: "auto 0", padding: "0 20px", lineHeight: 1, textShadow: "0 4px 24px rgba(0,0,0,.4)" } : { fontSize: 17, writingMode: "vertical-rl", transform: "rotate(180deg)" }) }}>
               {c.name}
             </span>
             {i === active && (
@@ -171,7 +194,7 @@ const BrandTone = () => {
   const pills = ["Clear", "Warm", "Transparent", "Human", "Honest", "Approachable"];
   const filled = ["Human", "Honest"];
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 420 }}>
+    <div className="brand-tone" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", minHeight: 420 }}>
       <div style={{ background: C.sky, padding: "60px 54px", display: "flex", flexDirection: "column", justifyContent: "flex-end" }}>
         <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 36, fontWeight: 900, color: C.navy, marginBottom: 20 }}>Brand Tone</h2>
         <div style={{ width: 28, height: 3, background: C.or, borderRadius: 2, marginBottom: 18 }} />
@@ -191,8 +214,8 @@ const BrandTone = () => {
 
 /* ── FOOTER ── */
 const Footer = ({ setPage }) => (
-  <footer style={{ background: C.dark, padding: "64px 60px 26px" }}>
-    <div style={{ display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr", gap: 46, marginBottom: 46 }}>
+  <footer className="site-footer" style={{ background: C.dark, padding: "64px 60px 26px" }}>
+    <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "1.8fr 1fr 1fr", gap: 46, marginBottom: 46 }}>
       <div>
         <div onClick={() => setPage("Home")} style={{ cursor: "pointer", marginBottom: 14 }}><LogoMark /></div>
         <p style={{ fontSize: 13, color: "rgba(255,255,255,.38)", lineHeight: 1.9, maxWidth: 268 }}>Your trusted travel partner from visa to destination — making journeys smooth, well-planned and memorable since 2012.</p>
@@ -240,7 +263,7 @@ const Footer = ({ setPage }) => (
         </div>
       </div>
     </div>
-    <div style={{ borderTop: "1px solid rgba(255,255,255,.06)", paddingTop: 22, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+    <div className="footer-bottom" style={{ borderTop: "1px solid rgba(255,255,255,.06)", paddingTop: 22, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <p style={{ fontSize: 11, color: "rgba(255,255,255,.25)" }}>© 2025 Traveltix. All rights reserved.</p>
       <div style={{ display: "flex", gap: 20 }}>
         {["Privacy", "Terms", "Cookies"].map(l => (
@@ -274,7 +297,7 @@ const HomePage = ({ setPage }) => {
   return (
     <div>
       {/* HERO */}
-      <section style={{ height: "100vh", minHeight: 640, position: "relative", display: "flex", alignItems: "center", overflow: "hidden" }}>
+      <section className="hero" style={{ height: "100vh", minHeight: 640, position: "relative", display: "flex", alignItems: "center", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0 }}>
           <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=1600&q=80&auto=format&fit=crop" alt="Hero" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(110deg,rgba(2,28,65,.93) 0%,rgba(2,28,65,.72) 55%,rgba(2,28,65,.22) 100%)" }} />
@@ -284,12 +307,12 @@ const HomePage = ({ setPage }) => {
             <path d="M-100 500 Q200 360 400 520 Q600 680 800 480 Q1000 280 1200 480 Q1400 680 1600 480" stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round" />
           </svg>
         </div>
-        <div style={{ position: "relative", zIndex: 3, padding: "0 60px", display: "grid", gridTemplateColumns: "1.1fr .9fr", gap: 48, alignItems: "center", width: "100%" }}>
+        <div className="hero-grid" style={{ position: "relative", zIndex: 3, padding: "0 60px", display: "grid", gridTemplateColumns: "1.1fr .9fr", gap: 48, alignItems: "center", width: "100%" }}>
           <div style={{ animation: "slideup .8s ease forwards" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(242,92,39,.18)", border: "1px solid rgba(242,92,39,.45)", color: C.or, fontFamily: "'Anybody',sans-serif", fontSize: 10, fontWeight: 800, padding: "6px 14px", borderRadius: 4, marginBottom: 22, letterSpacing: 2, textTransform: "uppercase" }}>
               ✈ Your Co-Pilot to Every Trip
             </div>
-            <h1 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 66, fontWeight: 900, lineHeight: .98, marginBottom: 12, letterSpacing: -1 }}>
+            <h1 className="hero-title" style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 66, fontWeight: 900, lineHeight: .98, marginBottom: 12, letterSpacing: -1 }}>
               We Handle<br />
               <span style={{ color: C.or }}>Hassles.</span><br />
               <span style={{ color: C.sky }}>Troubleless</span><br />
@@ -303,7 +326,7 @@ const HomePage = ({ setPage }) => {
               <BtnOutline onClick={() => setPage("Services")}>Our Services</BtnOutline>
             </div>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
+            <div className="hero-stats" style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
             <svg style={{ width: 180, height: "auto", filter: `drop-shadow(0 8px 32px rgba(242,92,39,.5))`, animation: "planefloat 4s ease-in-out infinite" }} viewBox="0 0 240 200">
               <path d="M220 90 L160 80 L130 20 L110 20 L120 80 L60 72 L45 52 L30 52 L38 82 L20 85 L20 95 L38 98 L30 128 L45 128 L60 108 L120 100 L110 160 L130 160 L160 100 L220 90 Z" fill={C.or} />
               <path d="M220 90 L160 80 L130 20 L110 20 L120 80 L60 72 L45 52 L30 52 L38 82 L20 85 L20 95 L38 98 L30 128 L45 128 L60 108 L120 100 L110 160 L130 160 L160 100 L220 90 Z" fill="none" stroke="#fff" strokeWidth="3" opacity=".25" />
@@ -322,11 +345,11 @@ const HomePage = ({ setPage }) => {
 
       {/* WHY CHOOSE */}
       <Sec2 bg={C.lace}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 52, gap: 32 }}>
+        <div className="section-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 52, gap: 32 }}>
           <div><Eyebrow txt="Why Choose Us" /><h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy }}>Why Choose <em style={{ color: C.or, fontStyle: "normal" }}>Traveltix</em></h2></div>
           <p style={{ color: "#5a6a7a", fontSize: 14, maxWidth: 380, lineHeight: 1.85 }}>High-class service from visa processing to arrival — making your journey smooth, well-planned and memorable.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+        <div className="why-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           {[
             { t: "High End Care from Start to Finish", p: "Expertise in everything from challenging visa applications to documentations, ticket bookings and travel counseling — a hassle-free, all-in-one travel solution." },
             { t: "Personalized Counseling", p: "Professionalism and care at every step, from timely communication to seamless booking management. We tailor each trip for maximum comfort." },
@@ -350,11 +373,11 @@ const HomePage = ({ setPage }) => {
 
       {/* DESTINATIONS */}
       <Sec2>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 46 }}>
+        <div className="section-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 46 }}>
           <div><Eyebrow txt="Top Picks" /><h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: C.navy }}>Popular <em style={{ color: C.or, fontStyle: "normal" }}>Destinations</em></h2></div>
           <span onClick={() => setPage("Destinations")} style={{ fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 800, color: C.or, borderBottom: `1.5px solid ${C.or}`, paddingBottom: 2, cursor: "pointer", textTransform: "uppercase", letterSpacing: ".5px" }}>View All →</span>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1.45fr 1fr 1fr", gridTemplateRows: "280px 260px", gap: 14 }}>
+        <div className="dest-grid" style={{ display: "grid", gridTemplateColumns: "1.45fr 1fr 1fr", gridTemplateRows: "280px 260px", gap: 14 }}>
           {destCards.map((d, i) => (
             <div key={i} style={{ borderRadius: 18, overflow: "hidden", position: "relative", cursor: "pointer", gridRow: d.tall ? "1/3" : "auto", gridColumn: d.wide ? "2/4" : "auto" }}
               onMouseEnter={e => { e.currentTarget.querySelector("img").style.transform = "scale(1.07)"; e.currentTarget.querySelector(".arr").style.background = C.or; }}
@@ -376,11 +399,11 @@ const HomePage = ({ setPage }) => {
 
       {/* FEATURES */}
       <Sec2 bg={C.navy}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+        <div className="section-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
           <div><Eyebrow txt="Our Services" light /><h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 44, fontWeight: 900, color: "#fff" }}>Travel With <em style={{ color: C.or, fontStyle: "normal" }}>Confidence</em></h2></div>
           <p style={{ color: "rgba(255,255,255,.45)", fontSize: 13, maxWidth: 320, lineHeight: 1.8 }}>Everything handled — from visa to landing — by Asia travel experts.</p>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18, marginTop: 50 }}>
+        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 18, marginTop: 50 }}>
           {features.map((f, i) => (
             <div key={i} style={{ background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.08)", borderRadius: 12, padding: "30px 24px", transition: "all .3s", position: "relative", overflow: "hidden" }}
               onMouseEnter={e => { e.currentTarget.style.background = "rgba(255,255,255,.09)"; e.currentTarget.style.borderColor = "rgba(242,92,39,.35)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
@@ -396,7 +419,7 @@ const HomePage = ({ setPage }) => {
 
       {/* HOW IT WORKS */}
       <Sec2 bg={C.lace}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
+        <div className="how-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
           <div style={{ position: "relative" }}>
             <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=80&auto=format&fit=crop" alt="How" style={{ width: "100%", height: 480, objectFit: "cover", borderRadius: 14 }} />
             <div style={{ position: "absolute", bottom: 22, left: 22, background: C.navy, borderRadius: 10, padding: "16px 20px", display: "flex", gap: 22 }}>
@@ -433,7 +456,7 @@ const HomePage = ({ setPage }) => {
       <WavyPattern color={C.sun} bg={C.lace} height={180} />
 
       {/* KEY MESSAGE */}
-      <section style={{ background: C.navy, padding: "96px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+      <section className="key-message" style={{ background: C.navy, padding: "96px 60px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
         <div>
           <Eyebrow txt="Key Message" light />
           <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 50, fontWeight: 900, color: "#fff", lineHeight: 1.05, marginBottom: 18 }}>Your <em style={{ color: C.or, fontStyle: "normal" }}>Co-Pilot</em><br />to Every Trip</h2>
@@ -454,7 +477,7 @@ const HomePage = ({ setPage }) => {
       </section>
 
       {/* CTA */}
-      <section style={{ position: "relative", padding: "108px 60px", textAlign: "center", overflow: "hidden" }}>
+      <section className="cta-section" style={{ position: "relative", padding: "108px 60px", textAlign: "center", overflow: "hidden" }}>
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80&auto=format&fit=crop" alt="CTA" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         <div style={{ position: "absolute", inset: 0, background: "rgba(2,28,65,.83)" }} />
         <div style={{ position: "relative", zIndex: 2 }}>
@@ -491,7 +514,7 @@ const DestinationsPage = () => {
   const filtered = filter === "All" ? dests : dests.filter(d => d.cat === filter);
   return (
     <div>
-      <div style={{ background: C.navy, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
+      <div className="page-hero" style={{ background: C.navy, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
         <WavyPattern color={C.or} height={300} bg="transparent" />
         <div style={{ position: "relative", zIndex: 2 }}>
           <Eyebrow txt="Explore" light />
@@ -500,12 +523,12 @@ const DestinationsPage = () => {
         </div>
       </div>
       <Sec2 bg={C.lace}>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 40 }}>
+        <div className="filter-bar" style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 40 }}>
           {cats.map(c => (
             <button key={c} onClick={() => setFilter(c)} style={{ padding: "10px 22px", fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 800, borderRadius: 30, border: `1.5px solid ${filter === c ? C.navy : "rgba(2,28,65,.2)"}`, background: filter === c ? C.navy : "#fff", color: filter === c ? C.or : C.navy, cursor: "pointer", letterSpacing: ".5px", textTransform: "uppercase", transition: "all .25s" }}>{c}</button>
           ))}
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
+        <div className="destinations-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
           {filtered.map((d, i) => (
             <div key={i} style={{ borderRadius: 14, overflow: "hidden", background: "#fff", border: "1px solid rgba(2,28,65,.07)", transition: "all .3s" }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-5px)"; e.currentTarget.style.boxShadow = "0 14px 40px rgba(2,28,65,.12)"; }}
@@ -544,7 +567,7 @@ const ServicesPage = () => {
   ];
   return (
     <div>
-      <div style={{ background: C.lace, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
+      <div className="page-hero" style={{ background: C.lace, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
         <svg style={{ position: "absolute", inset: 0, width: "100%", height: "100%", opacity: .4 }} viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice">
           <path d="M-80 150 Q360 50 720 200 Q1080 350 1520 150" stroke={C.sun} strokeWidth="28" fill="none" strokeLinecap="round" />
           <path d="M-80 350 Q360 250 720 400 Q1080 550 1520 350" stroke={C.sun} strokeWidth="28" fill="none" strokeLinecap="round" />
@@ -556,7 +579,7 @@ const ServicesPage = () => {
         </div>
       </div>
       <Sec2 bg={C.white}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+        <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
           {services.map((s, i) => (
             <div key={i} style={{ background: C.lace, borderRadius: 14, padding: "36px 28px", border: "1px solid rgba(2,28,65,.07)", transition: "all .3s", position: "relative", overflow: "hidden" }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = "0 18px 48px rgba(2,28,65,.1)"; e.currentTarget.querySelector(".sbar").style.transform = "scaleX(1)"; }}
@@ -576,7 +599,7 @@ const ServicesPage = () => {
           ))}
         </div>
       </Sec2>
-      <section style={{ background: C.navy, padding: "80px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <section className="cta-block" style={{ background: C.navy, padding: "80px 60px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <WavyPattern color={C.or} height={200} bg="transparent" />
         <div style={{ position: "relative", zIndex: 2 }}>
           <h2 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 44, fontWeight: 900, marginBottom: 14 }}>Ready to <em style={{ color: C.or, fontStyle: "normal" }}>Start Planning?</em></h2>
@@ -593,8 +616,8 @@ const ServicesPage = () => {
 ═══════════════════════════════════════════════ */
 const AboutPage = () => (
   <div>
-    <div style={{ background: C.navy, padding: "140px 60px 0", position: "relative", overflow: "hidden" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "flex-end" }}>
+    <div className="page-hero" style={{ background: C.navy, padding: "140px 60px 0", position: "relative", overflow: "hidden" }}>
+      <div className="about-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "flex-end" }}>
         <div style={{ paddingBottom: 80 }}>
           <Eyebrow txt="About Traveltix" light />
           <h1 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 56, fontWeight: 900, lineHeight: 1.05, marginBottom: 20 }}>We Make Travel<br /><em style={{ color: C.or, fontStyle: "normal" }}>Effortless</em></h1>
@@ -612,7 +635,7 @@ const AboutPage = () => (
       </div>
     </div>
     <Sec2 bg={C.lace}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
+      <div className="mission-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "center" }}>
         <div>
           <Eyebrow txt="Our Mission" />
           <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 40, fontWeight: 900, color: C.navy, marginBottom: 20 }}>Mission & <em style={{ color: C.or, fontStyle: "normal" }}>Vision</em></h2>
@@ -630,11 +653,11 @@ const AboutPage = () => (
     </Sec2>
     <BrandTone />
     <Sec2 bg={C.lace}>
-      <div style={{ textAlign: "center", marginBottom: 48 }}>
+      <div className="section-header" style={{ textAlign: "center", marginBottom: 48 }}>
         <Eyebrow txt="Find Us" center />
         <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 40, fontWeight: 900, color: C.navy, marginTop: 10 }}>Contact <em style={{ color: C.or, fontStyle: "normal" }}>Information</em></h2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
+      <div className="contact-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 22 }}>
         {[
           { icon: "📍", t: "Our Office", lines: ["Rupayan Prime, House 2,", "Road 7, Dhanmondi,", "Dhaka - 1205, Bangladesh"] },
           { icon: "📞", t: "Phone", lines: ["+880 1886 005274"] },
@@ -665,9 +688,9 @@ const CareerPage = () => {
   return (
     <div>
       {/* HERO */}
-      <div style={{ background: C.navy, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
+      <div className="page-hero" style={{ background: C.navy, padding: "140px 60px 80px", position: "relative", overflow: "hidden" }}>
         <WavyPattern color={C.or} height={400} bg="transparent" />
-        <div style={{ position: "relative", zIndex: 2, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+        <div className="career-hero-grid" style={{ position: "relative", zIndex: 2, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
           <div>
             <Eyebrow txt="Join Our Team" light />
             <h1 style={{ fontFamily: "'Anybody',sans-serif", color: "#fff", fontSize: 56, fontWeight: 900, lineHeight: 1.05, marginBottom: 20 }}>Build Your Career<br />in <em style={{ color: C.or, fontStyle: "normal" }}>Travel</em></h1>
@@ -687,7 +710,7 @@ const CareerPage = () => {
 
       {/* APPLICATION */}
       <Sec2 bg={C.navy}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }}>
+        <div className="career-apply-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 72, alignItems: "start" }}>
           <div>
             <Eyebrow txt="General Application" light />
             <h2 style={{ fontFamily: "'Anybody',sans-serif", fontSize: 40, fontWeight: 900, color: "#fff", marginBottom: 16 }}>Don't See Your <em style={{ color: C.or, fontStyle: "normal" }}>Role?</em></h2>
