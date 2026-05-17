@@ -1,24 +1,22 @@
 import { C, ASSETS } from "../constants/brand";
 
-export default function WavyPattern({ height = 200, bg = C.navy, opacity = 1 }) {
+export default function WavyPattern({ height = 240, bg = C.navy }) {
   return (
     <div style={{
       background: bg,
-      height,
-      position: "relative",
+      width: "100%",
+      lineHeight: 0, // removes inline gap under img
       overflow: "hidden",
     }}>
       <img
         src={ASSETS.brandPattern}
         alt=""
         style={{
-          position: "absolute",
-          inset: 0,
           width: "100%",
-          height: "100%",
+          height: height,
           objectFit: "cover",
-          objectPosition: "center",
-          opacity,
+          objectPosition: "center top",
+          display: "block",
           pointerEvents: "none",
           userSelect: "none",
         }}

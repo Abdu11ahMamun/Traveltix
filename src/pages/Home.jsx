@@ -3,14 +3,15 @@
 // ╚══════════════════════════════════════════════════════╝
 import { useNavigate } from "react-router-dom";
 import { C, ASSETS, BLOG_POSTS } from "../constants/brand";
-import Eyebrow       from "../components/shared/Eyebrow";
-import BtnOr         from "../components/shared/BtnOr";
-import BtnOutline    from "../components/shared/BtnOutline";
-import Marquee       from "../components/Marquee";
-import SearchBar     from "../components/SearchBar";
-import WavyPattern   from "../components/WavyPattern";
-import CountryHover  from "../components/CountryHover";
-import BrandTone     from "../components/BrandTone";
+import Eyebrow            from "../components/shared/Eyebrow";
+import BtnOr              from "../components/shared/BtnOr";
+import BtnOutline         from "../components/shared/BtnOutline";
+import Marquee            from "../components/Marquee";
+import SearchBar          from "../components/SearchBar";
+import WavyPattern        from "../components/WavyPattern";
+import CountryHover       from "../components/CountryHover";
+import BrandTone          from "../components/BrandTone";
+import TestimonialsCarousel from "../components/TestimonialsCarousel";
 
 const FEATURES = [
   { n:"01", icon:"🛡", t:"Visa Processing",    p:"End-to-end visa assistance — documentation, submission and tracking handled for you." },
@@ -78,7 +79,7 @@ export default function Home() {
       <SearchBar />
 
       {/* ── WHY CHOOSE ── */}
-      <section className="bg-pattern" style={{ padding:"88px 60px", background:C.lace }}>
+      <section style={{ padding:"88px 60px", background:C.lace }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:52, gap:32 }}>
           <div><Eyebrow txt="Why Choose Us"/><h2 style={{ fontFamily:"'Anybody',sans-serif", fontSize:44, fontWeight:900, color:C.navy }}>Why Choose <em style={{ color:C.or, fontStyle:"normal" }}>Traveltix</em></h2></div>
           <p style={{ color:"#5a6a7a", fontSize:14, maxWidth:380, lineHeight:1.85 }}>High-class service from visa processing to arrival — making your journey smooth and memorable.</p>
@@ -185,38 +186,9 @@ export default function Home() {
         </div>
       </section>
 
-      <BrandTone/>
-      <WavyPattern color={C.sun} bg={C.lace} height={180}/>
-
-      {/* ── TESTIMONIALS ── */}
-      <section style={{ padding:"88px 60px", background:"#fff" }}>
-        <div style={{ textAlign:"center", marginBottom:50 }}>
-          <Eyebrow txt="Client Reviews" center/>
-          <h2 style={{ fontFamily:"'Anybody',sans-serif", fontSize:44, fontWeight:900, color:C.navy, marginTop:10 }}>What Our Travelers Say</h2>
-        </div>
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:20 }}>
-          {[
-            { init:"RF", bg:C.or,   color:"#fff",   name:"Roy Franklin",  role:"Adventure Traveler, USA", text:"The Bali trip was beyond magical. Traveltix handled everything from visa to transfers. Every detail was flawless!" },
-            { init:"GH", bg:C.navy, color:"#fff",   name:"Gary Howard",   role:"Family Traveler, UK",     text:"Traveltix's personal touch is unmatched. The Thailand family tour was perfectly managed." },
-            { init:"LD", bg:C.sky,  color:C.navy,   name:"Louna Daniel",  role:"Solo Traveler, France",   text:"Cappadocia at sunrise in a hot air balloon — Traveltix made it happen seamlessly. Zero stress!" },
-          ].map((t,i) => (
-            <div key={i} style={{ background:C.lace, borderRadius:12, padding:26, border:`1px solid rgba(2,28,65,.06)`, transition:"all .3s" }}
-              onMouseEnter={e=>{ e.currentTarget.style.boxShadow="0 14px 40px rgba(2,28,65,.1)"; e.currentTarget.style.transform="translateY(-4px)"; }}
-              onMouseLeave={e=>{ e.currentTarget.style.boxShadow="none"; e.currentTarget.style.transform="none"; }}>
-              <div style={{ fontFamily:"Georgia,serif", fontSize:52, color:"rgba(242,92,39,.2)", lineHeight:.7, marginBottom:10 }}>"</div>
-              <div style={{ color:C.or, fontSize:13, letterSpacing:2, marginBottom:12 }}>★★★★★</div>
-              <p style={{ fontSize:13, color:"#5a6a7a", lineHeight:1.85, fontStyle:"italic", marginBottom:20 }}>{t.text}</p>
-              <div style={{ display:"flex", alignItems:"center", gap:12, paddingTop:16, borderTop:"1px solid rgba(2,28,65,.07)" }}>
-                <div style={{ width:40, height:40, borderRadius:"50%", background:t.bg, display:"flex", alignItems:"center", justifyContent:"center", fontFamily:"'Anybody',sans-serif", color:t.color, fontWeight:900, fontSize:13 }}>{t.init}</div>
-                <div>
-                  <h5 style={{ fontFamily:"'Anybody',sans-serif", fontSize:13, fontWeight:800, color:C.navy }}>{t.name}</h5>
-                  <span style={{ fontSize:11, color:"#94a3b8" }}>{t.role}</span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <BrandTone />
+      <WavyPattern height={240} />
+      <TestimonialsCarousel />
 
       {/* ── KEY MESSAGE ── */}
       <section style={{ background:C.navy, padding:"96px 60px", display:"grid", gridTemplateColumns:"1fr 1fr", gap:64, alignItems:"center" }}>
