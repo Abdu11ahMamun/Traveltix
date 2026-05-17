@@ -50,7 +50,25 @@ input, textarea, select { font-family: 'Epilogue', sans-serif; }
 ::-webkit-scrollbar-track        { background: #010f1f; }
 ::-webkit-scrollbar-thumb        { background: #F25C27; border-radius: 3px; }
 
-/* ── PILL HOVER UTIL ── */
+/* ── BRAND BACKGROUND UTILITY ── */
+.bg-pattern {
+  position: relative;
+}
+.bg-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--site-bg);
+  background-size: cover;
+  background-position: center;
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-pattern > * {
+  position: relative;
+  z-index: 1;
+}
 .pill-item:hover {
   background: #021C41 !important;
   border-color: #021C41 !important;

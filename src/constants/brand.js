@@ -13,6 +13,8 @@ export const C = {
 import hero         from "../assets/hero.png";
 import logo         from "../assets/TravelTix-logo.png";
 import logoAlt      from "../assets/travelTix.png";
+import bgPattern    from "../assets/Website Background.png";
+import brandPattern from "../assets/TTX Brand Patterns.png";
 
 // Indonesia
 import nusaPenida   from "../assets/Nusa Penida, Indonesia.png";
@@ -81,7 +83,7 @@ import galle        from "../assets/Galle, Sri Lanka.png";
 import nuwaraEliya  from "../assets/Nuwara Eliya, Sri Lanka.png";
 
 export const ASSETS = {
-  hero, logo, logoAlt,
+  hero, logo, logoAlt, bgPattern, brandPattern,
   indonesia: { nusaPenida, gateBali, lakeBeratan1, lakeBeratan2, lakeBeratan3, lakeBeratan4, ubud1, ubud2 },
   turkey:    { cappadocia, blueMosque1, blueMosque2, istanbul1, istanbul2 },
   thailand:  { bangkok1, bangkok2, phuket, pattaya },

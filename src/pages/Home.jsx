@@ -78,7 +78,7 @@ export default function Home() {
       <SearchBar />
 
       {/* ── WHY CHOOSE ── */}
-      <section style={{ padding:"88px 60px", background:C.lace }}>
+      <section className="bg-pattern" style={{ padding:"88px 60px", background:C.lace }}>
         <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:52, gap:32 }}>
           <div><Eyebrow txt="Why Choose Us"/><h2 style={{ fontFamily:"'Anybody',sans-serif", fontSize:44, fontWeight:900, color:C.navy }}>Why Choose <em style={{ color:C.or, fontStyle:"normal" }}>Traveltix</em></h2></div>
           <p style={{ color:"#5a6a7a", fontSize:14, maxWidth:380, lineHeight:1.85 }}>High-class service from visa processing to arrival — making your journey smooth and memorable.</p>
