@@ -7,6 +7,7 @@ import Eyebrow       from "../components/shared/Eyebrow";
 import BtnOr         from "../components/shared/BtnOr";
 import BtnOutline    from "../components/shared/BtnOutline";
 import Marquee       from "../components/Marquee";
+import SearchBar     from "../components/SearchBar";
 import WavyPattern   from "../components/WavyPattern";
 import CountryHover  from "../components/CountryHover";
 import BrandTone     from "../components/BrandTone";
@@ -74,6 +75,7 @@ export default function Home() {
       </section>
 
       <Marquee />
+      <SearchBar />
 
       {/* ── WHY CHOOSE ── */}
       <section style={{ padding:"88px 60px", background:C.lace }}>
@@ -277,5 +279,3 @@ export default function Home() {
     </div>
   );
 }
-
-
