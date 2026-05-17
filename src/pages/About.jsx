@@ -23,7 +23,7 @@ export default function About() {
               ))}
             </div>
           </div>
-          <img src={ASSETS.bhutan.tigerNest} alt="About" style={{ width:"100%", height:420, objectFit:"cover", borderRadius:"14px 14px 0 0" }}/>
+          <img src={ASSETS.bhutan.paro1} alt="About" style={{ width:"100%", height:420, objectFit:"cover", borderRadius:"14px 14px 0 0" }}/>
         </div>
       </div>
 
@@ -41,7 +41,7 @@ export default function About() {
               <p style={{ fontSize:14, color:"#5a6a7a", lineHeight:1.9 }}>We want to redefine your travel experience by delivering proactive care, sophisticated service, and dependable expertise that enables seamless exploration of new horizons.</p>
             </div>
           </div>
-          <img src={ASSETS.nepal.pokhara1} alt="Mission" style={{ width:"100%", height:400, objectFit:"cover", borderRadius:14 }}/>
+          <img src={ASSETS.indonesia.lakeBeratan2} alt="Mission" style={{ width:"100%", height:400, objectFit:"cover", borderRadius:14 }}/>
         </div>
       </section>
 

@@ -2,7 +2,7 @@
 // ║  src/pages/Home.jsx                                  ║
 // ╚══════════════════════════════════════════════════════╝
 import { useNavigate } from "react-router-dom";
-import { C, ASSETS, DESTINATIONS, BLOG_POSTS } from "../constants/brand";
+import { C, ASSETS, BLOG_POSTS } from "../constants/brand";
 import Eyebrow       from "../components/shared/Eyebrow";
 import BtnOr         from "../components/shared/BtnOr";
 import BtnOutline    from "../components/shared/BtnOutline";
@@ -277,10 +277,5 @@ export default function Home() {
     </div>
   );
 }
-
-
-
-
-
 
 
