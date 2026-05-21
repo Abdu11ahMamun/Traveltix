@@ -36,113 +36,99 @@ export default function Home() {
     <div>
 
       {/* ── HERO ── */}
-      <section style={{ minHeight:"100vh", position:"relative", display:"grid",
-        gridTemplateColumns:"1.1fr .9fr", background:C.navy, overflow:"hidden" }}>
+{/* ── HERO ── */}
+<section style={{ minHeight:"100vh", background:"#010f1f", position:"relative", display:"flex", flexDirection:"column", overflow:"hidden" }}>
 
-        {/* Brand pattern bg */}
-        <div style={{
-          position:"absolute", inset:0,
-          backgroundImage:`url(${ASSETS.brandPattern})`,
-          backgroundSize:"100% auto",
-          backgroundRepeat:"no-repeat",
-          backgroundPosition:"center",
-          opacity:.15,
-          pointerEvents:"none",
-          zIndex:1
-        }}/>
+  {/* navy base gradient */}
+  {/* <div style={{ position:"absolute", inset:0, background:"linear-gradient(120deg,#0b2a5e 0%,#021C41 45%,#000d1f 100%)" }}/> */}
+  <div style={{ position:"absolute", inset:0, background:"linear-gradient(100deg,rgba(1,15,31,.96) 0%,rgba(1,15,31,.75) 38%,rgba(1,15,31,.25) 65%,rgba(1,15,31,.05) 100%)" }}/>
 
-        {/* LEFT — text */}
-        <div className="anim-slideup" style={{ padding:"0 48px 0 60px", display:"flex",
-          flexDirection:"column", justifyContent:"center", position:"relative", zIndex:2 }}>
+  {/* hero.png — angled panel right */}
+  <div style={{ position:"absolute", top:0, right:0, bottom:0, width:"52%", clipPath:"polygon(8% 0%,100% 0%,100% 100%,0% 100%)", overflow:"hidden" }}>
+    <img
+  src="https://images.unsplash.com/photo-1513023654725-b7382eba0003?auto=format&fit=crop&w=1920&q=80"
+  alt="Trekkers looking at Everest"
+  style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 40%" }}
+/>
+  </div>
 
-          <div style={{ display:"inline-flex", alignItems:"center", gap:8,
-            background:"rgba(242,92,39,.15)", border:"1px solid rgba(242,92,39,.4)",
-            color:C.or, fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:600,
-            padding:"6px 14px", borderRadius:99, marginBottom:24, width:"fit-content", letterSpacing:.5 }}>
-            <span style={{ width:6, height:6, background:C.or, borderRadius:"50%" }}/>
-            Your Co-Pilot to Every Trip
-          </div>
+  {/* directional overlay — text side stays dark */}
+  <div style={{ position:"absolute", inset:0, background:"linear-gradient(100deg,rgba(1,15,31,.98) 0%,rgba(1,15,31,.88) 40%,rgba(1,15,31,.4) 68%,rgba(1,15,31,.1) 100%)" }}/>
+  {/* bottom-up darkening so stats bar sits on solid */}
+  <div style={{ position:"absolute", inset:0, background:"linear-gradient(to top,rgba(1,15,31,.98) 0%,transparent 42%)" }}/>
 
-          <h1 style={{ fontFamily:"'Anybody',sans-serif", color:"#fff", fontSize:62,
-            fontWeight:900, lineHeight:.96, marginBottom:20, letterSpacing:-1.5 }}>
-            We Handle<br/><span style={{ color:C.or }}>Hassles.</span><br/>
-            <span style={{ color:C.sky }}>Troubleless</span><br/>Travel.
-          </h1>
+  {/* glows */}
+  <div style={{ position:"absolute", bottom:"-100px", left:"5%", width:500, height:500, background:"radial-gradient(circle,rgba(242,92,39,.09) 0%,transparent 60%)", pointerEvents:"none" }}/>
+  <div style={{ position:"absolute", top:"-60px", right:"15%", width:400, height:400, background:"radial-gradient(circle,rgba(161,219,241,.05) 0%,transparent 65%)", pointerEvents:"none" }}/>
 
-          <p style={{ color:"rgba(255,255,255,.55)", fontSize:14, lineHeight:1.8,
-            marginBottom:36, maxWidth:400, fontWeight:300 }}>
-            Traveltix turns your journey into a stress-free experience — clear guidance
-            and dependable expertise from visa to departure and beyond.
-          </p>
+  {/* dot grid texture — right side only */}
+  <div style={{ position:"absolute", right:0, top:0, bottom:0, width:"45%", backgroundImage:"radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px)", backgroundSize:"28px 28px", zIndex:1, pointerEvents:"none" }}/>
 
-          <div style={{ display:"flex", gap:10 }}>
-            <BtnOr>Get Started →</BtnOr>
-            <BtnOutline onClick={() => navigate("/services")}>Our Services</BtnOutline>
-          </div>
+  {/* ghost word */}
+  <div style={{ position:"absolute", right:"-20px", top:"50%", transform:"translateY(-54%)", fontFamily:"'Anybody',sans-serif", fontSize:"clamp(110px,13vw,190px)", fontWeight:900, fontStyle:"italic", color:"transparent", WebkitTextStroke:"1px rgba(255,255,255,.04)", lineHeight:1, letterSpacing:"-6px", pointerEvents:"none", whiteSpace:"nowrap", zIndex:1 }}>TRAVEL</div>
 
-          {/* Inline stats row */}
-          <div style={{ display:"flex", gap:28, marginTop:44, paddingTop:28,
-            borderTop:"1px solid rgba(255,255,255,.08)" }}>
-            {[["12K+","Happy Travelers"],["48+","Destinations"],["4.9★","Client Rating"]].map(([n,l],i,a) => (
-              <React.Fragment key={l}>
-                <div style={{ display:"flex", flexDirection:"column", gap:2 }}>
-                  <span style={{ fontFamily:"'Anybody',sans-serif", color:C.or,
-                    fontSize:26, fontWeight:900, lineHeight:1 }}>{n}</span>
-                  <span style={{ fontSize:11, color:"rgba(255,255,255,.4)" }}>{l}</span>
-                </div>
-                {i < a.length-1 && <div style={{ width:1, background:"rgba(255,255,255,.1)", alignSelf:"stretch" }}/>}
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
+  {/* ── BODY ── */}
+  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:64,  }}>
+    {/* CENTER — eyebrow, headline, sub, buttons */}
+ {/* CENTER — eyebrow, headline, sub, buttons */}
+  <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center" }}>
+    
+    {/* eyebrow */}
+    <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:22 }}>
+      <div style={{ width:32, height:1, background:C.or }}/>
+      <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:10, fontWeight:600, color:C.or, letterSpacing:3, textTransform:"uppercase" }}>Your Co-Pilot to Every Trip</span>
+    </div>
 
-        {/* RIGHT — destination image collage */}
-        <div style={{ padding:"40px 48px 40px 16px", display:"grid",
-          gridTemplateColumns:"1fr 1fr", gridTemplateRows:"1fr 1fr", gap:10, zIndex:2 }}>
+    {/* h1 */}
+    <h1 style={{ fontFamily:"'Anybody',sans-serif", fontSize:"clamp(44px,4.6vw,68px)", fontWeight:900, color:"#fff", lineHeight:.9, letterSpacing:"-2.5px", marginBottom:28 }}>
+      We Handle <span style={{ color:C.or }}>Hassles.</span><br/>
+      <span style={{ color:"transparent", WebkitTextStroke:"2px rgba(255,255,255,.2)", fontStyle:"italic" }}>Troubleless</span>{" "}
+      <span style={{ color:C.sky }}>Travel.</span>
+    </h1>
 
-          {/* Tall card */}
-          <div style={{ gridRow:"1/3", borderRadius:16, overflow:"hidden", position:"relative" }}>
-            <img src={ASSETS.indonesia.nusaPenida} alt="Nusa Penida"
-              style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
-            <div style={{ position:"absolute", inset:0,
-              background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 50%)" }}/>
-            <div style={{ position:"absolute", top:14, right:14,
-              background:"rgba(254,205,42,.15)", border:"1px solid rgba(254,205,42,.35)",
-              borderRadius:99, padding:"4px 10px", fontSize:10, fontWeight:600,
-              color:C.sun, display:"flex", alignItems:"center", gap:4,
-              fontFamily:"'Epilogue',sans-serif" }}>
-              <span style={{ width:5, height:5, background:C.sun, borderRadius:"50%" }}/>
-              Verified
-            </div>
-            <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"16px 18px" }}>
-              <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
-                color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:2 }}>Indonesia</div>
-              <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:15, fontWeight:900,
-                color:"#fff" }}>Nusa Penida</div>
-              <div style={{ fontSize:11, color:"rgba(255,255,255,.5)" }}>Bali, Indonesia</div>
-            </div>
-          </div>
+    <p style={{ fontFamily:"'Epilogue',sans-serif", fontSize:13, fontWeight:300, color:"rgba(255,255,255,.45)", lineHeight:1.85, marginBottom:24, maxWidth:400 }}>
+      Traveltix delivers white-glove travel expertise — visas, flights, hotels and beyond, handled with precision and care so you arrive stress-free.
+    </p>
 
-          {/* Small cards */}
-          {[
-            { img:ASSETS.turkey.cappadocia, cat:"Turkey", name:"Cappadocia", sub:"Central Anatolia" },
-            { img:ASSETS.japan.mtFuji1,     cat:"Japan",  name:"Mt. Fuji",   sub:"Shizuoka, Japan" },
-          ].map((d) => (
-            <div key={d.name} style={{ borderRadius:16, overflow:"hidden", position:"relative" }}>
-              <img src={d.img} alt={d.name} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
-              <div style={{ position:"absolute", inset:0,
-                background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 55%)" }}/>
-              <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"12px 14px" }}>
-                <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
-                  color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:1 }}>{d.cat}</div>
-                <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:14, fontWeight:900,
-                  color:"#fff" }}>{d.name}</div>
-                <div style={{ fontSize:10, color:"rgba(255,255,255,.5)" }}>{d.sub}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    <div style={{ display:"flex", gap:12 }}>
+      <BtnOr>Start Your Journey →</BtnOr>
+      <BtnOutline onClick={() => navigate("/services")}>Our Services</BtnOutline>
+    </div>
+
+  </div>
+
+    {/* mid row */}
+    {/* BOTTOM — award + scroll pinned to bottom-right */}
+  <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:16, paddingBottom:28 }}>
+    <div style={{ display:"flex", alignItems:"center", gap:10, border:"1px solid rgba(254,205,42,.2)", borderRadius:99, padding:"8px 16px 8px 10px", background:"rgba(254,205,42,.05)" }}>
+      <div style={{ width:26, height:26, borderRadius:"50%", background:"rgba(254,205,42,.12)", display:"flex", alignItems:"center", justifyContent:"center", color:C.sun, fontSize:13 }}>★</div>
+      <div>
+        <div style={{ fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:600, color:C.sun }}>4.9 / 5 Verified Rating</div>
+        <div style={{ fontFamily:"'Epilogue',sans-serif", fontSize:9, color:"rgba(255,255,255,.3)" }}>12,000+ Happy Travelers</div>
+      </div>
+    </div>
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:6 }}>
+      <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:9, color:"rgba(255,255,255,.2)", letterSpacing:2, textTransform:"uppercase" }}>Scroll</span>
+      <div style={{ width:1, height:32, background:`linear-gradient(to bottom,${C.or},transparent)` }}/>
+    </div>
+  </div>
+  </div>
+
+  {/* ── STATS BAR ── */}
+  <div style={{ position:"relative", zIndex:3, display:"flex", alignItems:"stretch", borderTop:"1px solid rgba(255,255,255,.06)", marginTop:28 }}>
+    {[["12K+","Happy Travelers"],["48+","Destinations"],["10+","Years Expertise"],["98%","Satisfaction Rate"]].map(([n,l]) => (
+      <div key={l} style={{ flex:1, padding:"18px 0", display:"flex", flexDirection:"column", alignItems:"center", gap:3, borderRight:"1px solid rgba(255,255,255,.06)" }}>
+        <span style={{ fontFamily:"'Anybody',sans-serif", fontSize:22, fontWeight:900, color:C.or, lineHeight:1 }}>{n}</span>
+        <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:9, color:"rgba(255,255,255,.3)", textTransform:"uppercase", letterSpacing:.8 }}>{l}</span>
+      </div>
+    ))}
+    <div style={{ flex:1.4, padding:"18px 24px", display:"flex", alignItems:"center", justifyContent:"center", gap:8, background:"rgba(242,92,39,.05)" }}>
+      <div style={{ width:5, height:5, borderRadius:"50%", background:C.or, flexShrink:0 }}/>
+      <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:10, color:"rgba(255,255,255,.25)", letterSpacing:.3 }}>Trusted · Transparent · 24/7 Support</span>
+    </div>
+  </div>
+
+</section>
 
       <Marquee />
       <SearchBar />
@@ -171,8 +157,17 @@ export default function Home() {
         </div>
       </section>
 
-      <WavyPattern/>
-      <CountryHover/>
+     {/* Replace <WavyPattern/> with brand pattern divider */}
+<div style={{
+  width:"100%", height:120,
+  backgroundImage:`url(${ASSETS.brandPattern})`,
+  backgroundSize:"100% 100%",
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+  opacity:1,
+}}/> 
+
+<CountryHover/>
 
       {/* ── DESTINATIONS PREVIEW ── */}
       <section style={{ padding:"88px 60px", background:"#fff" }}>
@@ -255,9 +250,18 @@ export default function Home() {
         </div>
       </section>
 
-      <BrandTone />
-      <WavyPattern height={240} />
-      <TestimonialsCarousel />
+   <BrandTone />
+
+{/* Brand pattern divider */}
+<div style={{
+  width:"100%", height:120,
+  backgroundImage:`url(${ASSETS.brandPattern})`,
+  backgroundSize:"100% 100%",
+  backgroundRepeat:"no-repeat",
+  backgroundPosition:"center",
+}}/> 
+
+<TestimonialsCarousel />
 
       {/* ── KEY MESSAGE ── */}
       <section style={{ background:C.navy, padding:"96px 60px", display:"grid", gridTemplateColumns:"1fr 1fr", gap:64, alignItems:"center" }}>

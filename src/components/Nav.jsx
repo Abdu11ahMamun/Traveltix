@@ -1,59 +1,77 @@
-// ── src/components/Nav.jsx ─────────────────────────────────────────────────
+// ╔══════════════════════════════════════════════════════╗
+// ║  src/components/Nav.jsx                              ║
+// ╚══════════════════════════════════════════════════════╝
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { C, ASSETS } from "../constants/brand";
-import BtnOr from "./shared/BtnOr";
+import React from "react";
+
+
+const LINKS = [
+  { label:"Home",         path:"/" },
+  { label:"Destinations", path:"/destinations" },
+  { label:"Services",     path:"/services" },
+  { label:"About",        path:"/about" },
+  { label:"Blog",         path:"/blog" },
+  { label:"Career",       path:"/career" },
+];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const navigate  = useNavigate();
   const location  = useLocation();
-  const links     = ["Home", "Destinations", "Services", "About", "Blog", "Career"];
-  const pathMap   = { Home: "/", Destinations: "/destinations", Services: "/services", About: "/about", Blog: "/blog", Career: "/career" };
 
   useEffect(() => {
-    const h = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", h);
-    return () => window.removeEventListener("scroll", h);
+    const fn = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", fn);
+    return () => window.removeEventListener("scroll", fn);
   }, []);
-
-  const isActive = (label) => {
-    const path = pathMap[label];
-    return label === "Home" ? location.pathname === "/" : location.pathname.startsWith(path);
-  };
 
   return (
     <nav style={{
-      position: "fixed", top: 0, width: "100%", zIndex: 999,
-      padding: "0 60px", height: 68, display: "flex", alignItems: "center",
-      justifyContent: "space-between", transition: "all .4s",
-      background: scrolled ? "rgba(2,28,65,.96)" : "transparent",
-      boxShadow: scrolled ? "0 2px 24px rgba(0,0,0,.28)" : "none",
+      position:"fixed", top:0, left:0, right:0, zIndex:100,
+      height:64, display:"flex", alignItems:"center",
+      justifyContent:"space-between", padding:"0 52px",
+      background: scrolled ? "rgba(1,15,31,.96)" : "transparent",
+      backdropFilter: scrolled ? "blur(16px)" : "none",
+      borderBottom:"1px solid rgba(255,255,255,.05)",
+      transition:"background .35s, backdrop-filter .35s",
     }}>
+
       {/* Logo */}
-      <div onClick={() => navigate("/")} style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10 }}>
-        <img src={ASSETS.logo} alt="Traveltix" style={{ height: 36, width: "auto", objectFit: "contain" }} />
-      </div>
+      <img
+        src={ASSETS.logo}           // TravelTix-logo.png — make sure it's the white version
+        alt="Traveltix"
+        style={{ height:66, width:"auto", cursor:"pointer" }}
+        onClick={() => navigate("/")}
+      />
 
       {/* Links */}
-      <ul style={{ display: "flex", gap: 28, listStyle: "none" }}>
-        {links.map(l => (
-          <li key={l}>
-            <span onClick={() => navigate(pathMap[l])} style={{
-              fontFamily: "'Anybody',sans-serif", fontSize: 12, fontWeight: 700,
-              letterSpacing: ".8px", textTransform: "uppercase", cursor: "pointer",
-              color: isActive(l) ? "#fff" : "rgba(255,255,255,.68)",
-              borderBottom: isActive(l) ? `2px solid ${C.or}` : "2px solid transparent",
-              paddingBottom: 3, transition: "all .2s",
-            }}
-              onMouseEnter={e => { e.currentTarget.style.color = "#fff"; }}
-              onMouseLeave={e => { if (!isActive(l)) e.currentTarget.style.color = "rgba(255,255,255,.68)"; }}
-            >{l}</span>
-          </li>
-        ))}
-      </ul>
+      <div style={{ display:"flex", gap:30 }}>
+        {LINKS.map(({ label, path }) => {
+          const active = location.pathname === path;
+          return (
+            <span key={path} onClick={() => navigate(path)} style={{
+              fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:500,
+              color: active ? "#fff" : "rgba(255,255,255,.45)",
+              textTransform:"uppercase", letterSpacing:".8px", cursor:"pointer",
+              borderBottom: active ? `1.5px solid ${C.or}` : "1.5px solid transparent",
+              paddingBottom:2, transition:"color .2s",
+            }}>{label}</span>
+          );
+        })}
+      </div>
 
-      <BtnOr style={{ fontSize: 11, padding: "9px 20px" }}>Book a Trip</BtnOr>
+      {/* Right — phone + CTA */}
+      <div style={{ display:"flex", alignItems:"center", gap:18 }}>
+        <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:11, color:"rgba(255,255,255,.3)", display:"flex", alignItems:"center", gap:6 }}>
+          <span style={{ width:5, height:5, background:C.or, borderRadius:"50%", display:"inline-block", flexShrink:0 }}/>
+          +880 1886 005274
+        </span>
+        <button style={{ fontFamily:"'Anybody',sans-serif", fontSize:10, fontWeight:800, color:"#fff", background:C.or, border:"none", padding:"10px 20px", borderRadius:3, cursor:"pointer", textTransform:"uppercase", letterSpacing:".8px" }}>
+          Book a Trip
+        </button>
+      </div>
     </nav>
   );
 }
