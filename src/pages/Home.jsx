@@ -23,124 +23,126 @@ const FEATURES = [
   { n:"06", icon:"🕐", t:"24/7 Support",       p:"Round-the-clock assistance before, during, and after your journey." },
 ];
 
-// Home destination preview (4 cards)
 const HOME_DESTS = [
-  { img: ASSETS.indonesia.nusaPenida, cat:"Indonesia", name:"Nusa Penida",    sub:"Bali, Indonesia",    tall: true },
-  { img: ASSETS.turkey.cappadocia,    cat:"Turkey",    name:"Cappadocia",     sub:"Central Anatolia" },
-  { img: ASSETS.japan.mtFuji1,        cat:"Japan",     name:"Mt. Fuji",       sub:"Shizuoka, Japan" },
-  { img: ASSETS.malaysia.kl1,         cat:"Malaysia",  name:"Kuala Lumpur",   sub:"Malaysia",           wide: true },
+  { img: ASSETS.indonesia.nusaPenida, cat:"Indonesia", name:"Nusa Penida",  sub:"Bali, Indonesia",  tall: true },
+  { img: ASSETS.turkey.cappadocia,    cat:"Turkey",    name:"Cappadocia",   sub:"Central Anatolia" },
+  { img: ASSETS.japan.mtFuji1,        cat:"Japan",     name:"Mt. Fuji",     sub:"Shizuoka, Japan" },
+  { img: ASSETS.malaysia.kl1,         cat:"Malaysia",  name:"Kuala Lumpur", sub:"Malaysia",         wide: true },
 ];
 
 export default function Home() {
   const navigate = useNavigate();
   return (
     <div>
+
       {/* ── HERO ── */}
-      {/* ── HERO ── */}
-<section style={{ minHeight:"100vh", position:"relative", display:"grid",
-  gridTemplateColumns:"1.1fr .9fr", background:C.navy, overflow:"hidden" }}>
-  
-  {/* bg wavy lines */}
-  <svg style={{ position:"absolute", inset:0, width:"100%", height:"100%",
-    opacity:.04, pointerEvents:"none" }} viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-    <path d="M-100 200 Q200 80 400 250 Q600 420 800 200 Q1000 -20 1200 200 Q1400 420 1600 200"
-      stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round"/>
-    <path d="M-100 500 Q200 360 400 520 Q600 680 800 480 Q1000 280 1200 480 Q1400 680 1600 480"
-      stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round"/>
-  </svg>
+      <section style={{ minHeight:"100vh", position:"relative", display:"grid",
+        gridTemplateColumns:"1.1fr .9fr", background:C.navy, overflow:"hidden" }}>
 
-  {/* LEFT — text */}
-  <div className="anim-slideup" style={{ padding:"0 48px 0 60px", display:"flex",
-    flexDirection:"column", justifyContent:"center", position:"relative", zIndex:2 }}>
-    
-    <div style={{ display:"inline-flex", alignItems:"center", gap:8,
-      background:"rgba(242,92,39,.15)", border:"1px solid rgba(242,92,39,.4)",
-      color:C.or, fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:600,
-      padding:"6px 14px", borderRadius:99, marginBottom:24, width:"fit-content", letterSpacing:.5 }}>
-      <span style={{ width:6, height:6, background:C.or, borderRadius:"50%" }}/>
-      Your Co-Pilot to Every Trip
-    </div>
+        {/* Brand pattern bg */}
+        <div style={{
+          position:"absolute", inset:0,
+          backgroundImage:`url(${ASSETS.brandPattern})`,
+          backgroundSize:"100% auto",
+          backgroundRepeat:"no-repeat",
+          backgroundPosition:"center",
+          opacity:.15,
+          pointerEvents:"none",
+          zIndex:1
+        }}/>
 
-    <h1 style={{ fontFamily:"'Anybody',sans-serif", color:"#fff", fontSize:62,
-      fontWeight:900, lineHeight:.96, marginBottom:20, letterSpacing:-1.5 }}>
-      We Handle<br/><span style={{ color:C.or }}>Hassles.</span><br/>
-      <span style={{ color:C.sky }}>Troubleless</span><br/>Travel.
-    </h1>
+        {/* LEFT — text */}
+        <div className="anim-slideup" style={{ padding:"0 48px 0 60px", display:"flex",
+          flexDirection:"column", justifyContent:"center", position:"relative", zIndex:2 }}>
 
-    <p style={{ color:"rgba(255,255,255,.55)", fontSize:14, lineHeight:1.8,
-      marginBottom:36, maxWidth:400, fontWeight:300 }}>
-      Traveltix turns your journey into a stress-free experience — clear guidance
-      and dependable expertise from visa to departure and beyond.
-    </p>
-
-    <div style={{ display:"flex", gap:10 }}>
-      <BtnOr>Get Started →</BtnOr>
-      <BtnOutline onClick={() => navigate("/services")}>Our Services</BtnOutline>
-    </div>
-
-    {/* Inline stats row */}
-    <div style={{ display:"flex", gap:28, marginTop:44, paddingTop:28,
-      borderTop:"1px solid rgba(255,255,255,.08)" }}>
-      {[["12K+","Happy Travelers"],["48+","Destinations"],["4.9★","Client Rating"]].map(([n,l],i,a) => (
-        <React.Fragment key={l}>
-          <div style={{ display:"flex", flexDirection:"column", gap:2 }}>
-            <span style={{ fontFamily:"'Anybody',sans-serif", color:C.or,
-              fontSize:26, fontWeight:900, lineHeight:1 }}>{n}</span>
-            <span style={{ fontSize:11, color:"rgba(255,255,255,.4)" }}>{l}</span>
+          <div style={{ display:"inline-flex", alignItems:"center", gap:8,
+            background:"rgba(242,92,39,.15)", border:"1px solid rgba(242,92,39,.4)",
+            color:C.or, fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:600,
+            padding:"6px 14px", borderRadius:99, marginBottom:24, width:"fit-content", letterSpacing:.5 }}>
+            <span style={{ width:6, height:6, background:C.or, borderRadius:"50%" }}/>
+            Your Co-Pilot to Every Trip
           </div>
-          {i < a.length-1 && <div style={{ width:1, background:"rgba(255,255,255,.1)", alignSelf:"stretch" }}/>}
-        </React.Fragment>
-      ))}
-    </div>
-  </div>
 
-  {/* RIGHT — destination image collage */}
-  <div style={{ padding:"40px 48px 40px 16px", display:"grid",
-    gridTemplateColumns:"1fr 1fr", gridTemplateRows:"1fr 1fr", gap:10, zIndex:2 }}>
-    
-    {/* Tall card */}
-    <div style={{ gridRow:"1/3", borderRadius:16, overflow:"hidden", position:"relative" }}>
-      <img src={ASSETS.indonesia.nusaPenida} alt="Nusa Penida"
-        style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
-      <div style={{ position:"absolute", inset:0,
-        background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 50%)" }}/>
-      <div style={{ position:"absolute", top:14, right:14,
-        background:"rgba(254,205,42,.15)", border:"1px solid rgba(254,205,42,.35)",
-        borderRadius:99, padding:"4px 10px", fontSize:10, fontWeight:600,
-        color:C.sun, display:"flex", alignItems:"center", gap:4,
-        fontFamily:"'Epilogue',sans-serif" }}>
-        <span style={{ width:5, height:5, background:C.sun, borderRadius:"50%" }}/>
-        Verified
-      </div>
-      <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"16px 18px" }}>
-        <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
-          color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:2 }}>Indonesia</div>
-        <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:15, fontWeight:900,
-          color:"#fff" }}>Nusa Penida</div>
-        <div style={{ fontSize:11, color:"rgba(255,255,255,.5)" }}>Bali, Indonesia</div>
-      </div>
-    </div>
+          <h1 style={{ fontFamily:"'Anybody',sans-serif", color:"#fff", fontSize:62,
+            fontWeight:900, lineHeight:.96, marginBottom:20, letterSpacing:-1.5 }}>
+            We Handle<br/><span style={{ color:C.or }}>Hassles.</span><br/>
+            <span style={{ color:C.sky }}>Troubleless</span><br/>Travel.
+          </h1>
 
-    {/* Small cards */}
-    {[
-      { img:ASSETS.turkey.cappadocia, cat:"Turkey", name:"Cappadocia", sub:"Central Anatolia" },
-      { img:ASSETS.japan.mtFuji1,     cat:"Japan",  name:"Mt. Fuji",   sub:"Shizuoka, Japan" },
-    ].map((d) => (
-      <div key={d.name} style={{ borderRadius:16, overflow:"hidden", position:"relative" }}>
-        <img src={d.img} alt={d.name} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
-        <div style={{ position:"absolute", inset:0,
-          background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 55%)" }}/>
-        <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"12px 14px" }}>
-          <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
-            color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:1 }}>{d.cat}</div>
-          <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:14, fontWeight:900,
-            color:"#fff" }}>{d.name}</div>
-          <div style={{ fontSize:10, color:"rgba(255,255,255,.5)" }}>{d.sub}</div>
+          <p style={{ color:"rgba(255,255,255,.55)", fontSize:14, lineHeight:1.8,
+            marginBottom:36, maxWidth:400, fontWeight:300 }}>
+            Traveltix turns your journey into a stress-free experience — clear guidance
+            and dependable expertise from visa to departure and beyond.
+          </p>
+
+          <div style={{ display:"flex", gap:10 }}>
+            <BtnOr>Get Started →</BtnOr>
+            <BtnOutline onClick={() => navigate("/services")}>Our Services</BtnOutline>
+          </div>
+
+          {/* Inline stats row */}
+          <div style={{ display:"flex", gap:28, marginTop:44, paddingTop:28,
+            borderTop:"1px solid rgba(255,255,255,.08)" }}>
+            {[["12K+","Happy Travelers"],["48+","Destinations"],["4.9★","Client Rating"]].map(([n,l],i,a) => (
+              <React.Fragment key={l}>
+                <div style={{ display:"flex", flexDirection:"column", gap:2 }}>
+                  <span style={{ fontFamily:"'Anybody',sans-serif", color:C.or,
+                    fontSize:26, fontWeight:900, lineHeight:1 }}>{n}</span>
+                  <span style={{ fontSize:11, color:"rgba(255,255,255,.4)" }}>{l}</span>
+                </div>
+                {i < a.length-1 && <div style={{ width:1, background:"rgba(255,255,255,.1)", alignSelf:"stretch" }}/>}
+              </React.Fragment>
+            ))}
+          </div>
         </div>
-      </div>
-    ))}
-  </div>
-</section>
+
+        {/* RIGHT — destination image collage */}
+        <div style={{ padding:"40px 48px 40px 16px", display:"grid",
+          gridTemplateColumns:"1fr 1fr", gridTemplateRows:"1fr 1fr", gap:10, zIndex:2 }}>
+
+          {/* Tall card */}
+          <div style={{ gridRow:"1/3", borderRadius:16, overflow:"hidden", position:"relative" }}>
+            <img src={ASSETS.indonesia.nusaPenida} alt="Nusa Penida"
+              style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
+            <div style={{ position:"absolute", inset:0,
+              background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 50%)" }}/>
+            <div style={{ position:"absolute", top:14, right:14,
+              background:"rgba(254,205,42,.15)", border:"1px solid rgba(254,205,42,.35)",
+              borderRadius:99, padding:"4px 10px", fontSize:10, fontWeight:600,
+              color:C.sun, display:"flex", alignItems:"center", gap:4,
+              fontFamily:"'Epilogue',sans-serif" }}>
+              <span style={{ width:5, height:5, background:C.sun, borderRadius:"50%" }}/>
+              Verified
+            </div>
+            <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"16px 18px" }}>
+              <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
+                color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:2 }}>Indonesia</div>
+              <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:15, fontWeight:900,
+                color:"#fff" }}>Nusa Penida</div>
+              <div style={{ fontSize:11, color:"rgba(255,255,255,.5)" }}>Bali, Indonesia</div>
+            </div>
+          </div>
+
+          {/* Small cards */}
+          {[
+            { img:ASSETS.turkey.cappadocia, cat:"Turkey", name:"Cappadocia", sub:"Central Anatolia" },
+            { img:ASSETS.japan.mtFuji1,     cat:"Japan",  name:"Mt. Fuji",   sub:"Shizuoka, Japan" },
+          ].map((d) => (
+            <div key={d.name} style={{ borderRadius:16, overflow:"hidden", position:"relative" }}>
+              <img src={d.img} alt={d.name} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
+              <div style={{ position:"absolute", inset:0,
+                background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 55%)" }}/>
+              <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"12px 14px" }}>
+                <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
+                  color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:1 }}>{d.cat}</div>
+                <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:14, fontWeight:900,
+                  color:"#fff" }}>{d.name}</div>
+                <div style={{ fontSize:10, color:"rgba(255,255,255,.5)" }}>{d.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <Marquee />
       <SearchBar />
@@ -315,6 +317,7 @@ export default function Home() {
           <p style={{ color:"rgba(255,255,255,.35)", fontSize:12, marginTop:16 }}>✈ Free Consultation · No Hidden Fees · 24/7 Support</p>
         </div>
       </section>
+
     </div>
   );
 }
