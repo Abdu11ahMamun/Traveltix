@@ -68,7 +68,7 @@ export default function Home() {
   <div style={{ position:"absolute", right:"-20px", top:"50%", transform:"translateY(-54%)", fontFamily:"'Anybody',sans-serif", fontSize:"clamp(110px,13vw,190px)", fontWeight:900, fontStyle:"italic", color:"transparent", WebkitTextStroke:"1px rgba(255,255,255,.04)", lineHeight:1, letterSpacing:"-6px", pointerEvents:"none", whiteSpace:"nowrap", zIndex:1 }}>TRAVEL</div>
 
   {/* ── BODY ── */}
-  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:64,  }}>
+  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:150  }}>
     {/* CENTER — eyebrow, headline, sub, buttons */}
  {/* CENTER — eyebrow, headline, sub, buttons */}
   <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"center" }}>
@@ -96,8 +96,6 @@ export default function Home() {
     </div>
 
   </div>
-
-    {/* mid row */}
     {/* BOTTOM — award + scroll pinned to bottom-right */}
   <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:16, paddingBottom:28 }}>
     <div style={{ display:"flex", alignItems:"center", gap:10, border:"1px solid rgba(254,205,42,.2)", borderRadius:99, padding:"8px 16px 8px 10px", background:"rgba(254,205,42,.05)" }}>
