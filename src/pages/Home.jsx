@@ -12,6 +12,7 @@ import WavyPattern        from "../components/WavyPattern";
 import CountryHover       from "../components/CountryHover";
 import BrandTone          from "../components/BrandTone";
 import TestimonialsCarousel from "../components/TestimonialsCarousel";
+import React from "react";
 
 const FEATURES = [
   { n:"01", icon:"🛡", t:"Visa Processing",    p:"End-to-end visa assistance — documentation, submission and tracking handled for you." },
@@ -35,45 +36,111 @@ export default function Home() {
   return (
     <div>
       {/* ── HERO ── */}
-      <section style={{ height:"100vh", minHeight:640, position:"relative", display:"flex", alignItems:"center", overflow:"hidden" }}>
-        <div style={{ position:"absolute", inset:0 }}>
-          <img src={ASSETS.hero} alt="Hero" style={{ width:"100%", height:"100%", objectFit:"cover" }} />
-          <div style={{ position:"absolute", inset:0, background:"linear-gradient(110deg,rgba(2,28,65,.93) 0%,rgba(2,28,65,.72) 55%,rgba(2,28,65,.22) 100%)" }} />
-          <div style={{ position:"absolute", bottom:0, left:0, right:0, height:160, background:`linear-gradient(to top,${C.lace},transparent)` }} />
-          <svg style={{ position:"absolute", inset:0, width:"100%", height:"100%", opacity:.06, pointerEvents:"none" }} viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
-            <path d="M-100 200 Q200 80 400 250 Q600 420 800 200 Q1000 -20 1200 200 Q1400 420 1600 200" stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round"/>
-            <path d="M-100 500 Q200 360 400 520 Q600 680 800 480 Q1000 280 1200 480 Q1400 680 1600 480" stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round"/>
-          </svg>
-        </div>
-        <div style={{ position:"relative", zIndex:3, padding:"0 60px", display:"grid", gridTemplateColumns:"1.1fr .9fr", gap:48, alignItems:"center", width:"100%" }}>
-          <div className="anim-slideup">
-            <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(242,92,39,.18)", border:"1px solid rgba(242,92,39,.45)", color:C.or, fontFamily:"'Anybody',sans-serif", fontSize:10, fontWeight:800, padding:"6px 14px", borderRadius:4, marginBottom:22, letterSpacing:2, textTransform:"uppercase" }}>
-              ✈ Your Co-Pilot to Every Trip
-            </div>
-            <h1 style={{ fontFamily:"'Anybody',sans-serif", color:"#fff", fontSize:66, fontWeight:900, lineHeight:.98, marginBottom:12, letterSpacing:-1 }}>
-              We Handle<br/><span style={{ color:C.or }}>Hassles.</span><br/><span style={{ color:C.sky }}>Troubleless</span><br/>Travel.
-            </h1>
-            <p style={{ color:"rgba(255,255,255,.62)", fontSize:15, lineHeight:1.85, marginBottom:34, maxWidth:450, fontWeight:300 }}>
-              Traveltix turns your journey into a stress-free, tailored experience — clear guidance and dependable expertise from visa to departure and beyond.
-            </p>
-            <div style={{ display:"flex", gap:12 }}>
-              <BtnOr>Get Started →</BtnOr>
-              <BtnOutline onClick={() => navigate("/services")}>Our Services</BtnOutline>
-            </div>
+      {/* ── HERO ── */}
+<section style={{ minHeight:"100vh", position:"relative", display:"grid",
+  gridTemplateColumns:"1.1fr .9fr", background:C.navy, overflow:"hidden" }}>
+  
+  {/* bg wavy lines */}
+  <svg style={{ position:"absolute", inset:0, width:"100%", height:"100%",
+    opacity:.04, pointerEvents:"none" }} viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+    <path d="M-100 200 Q200 80 400 250 Q600 420 800 200 Q1000 -20 1200 200 Q1400 420 1600 200"
+      stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round"/>
+    <path d="M-100 500 Q200 360 400 520 Q600 680 800 480 Q1000 280 1200 480 Q1400 680 1600 480"
+      stroke={C.or} strokeWidth="28" fill="none" strokeLinecap="round"/>
+  </svg>
+
+  {/* LEFT — text */}
+  <div className="anim-slideup" style={{ padding:"0 48px 0 60px", display:"flex",
+    flexDirection:"column", justifyContent:"center", position:"relative", zIndex:2 }}>
+    
+    <div style={{ display:"inline-flex", alignItems:"center", gap:8,
+      background:"rgba(242,92,39,.15)", border:"1px solid rgba(242,92,39,.4)",
+      color:C.or, fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:600,
+      padding:"6px 14px", borderRadius:99, marginBottom:24, width:"fit-content", letterSpacing:.5 }}>
+      <span style={{ width:6, height:6, background:C.or, borderRadius:"50%" }}/>
+      Your Co-Pilot to Every Trip
+    </div>
+
+    <h1 style={{ fontFamily:"'Anybody',sans-serif", color:"#fff", fontSize:62,
+      fontWeight:900, lineHeight:.96, marginBottom:20, letterSpacing:-1.5 }}>
+      We Handle<br/><span style={{ color:C.or }}>Hassles.</span><br/>
+      <span style={{ color:C.sky }}>Troubleless</span><br/>Travel.
+    </h1>
+
+    <p style={{ color:"rgba(255,255,255,.55)", fontSize:14, lineHeight:1.8,
+      marginBottom:36, maxWidth:400, fontWeight:300 }}>
+      Traveltix turns your journey into a stress-free experience — clear guidance
+      and dependable expertise from visa to departure and beyond.
+    </p>
+
+    <div style={{ display:"flex", gap:10 }}>
+      <BtnOr>Get Started →</BtnOr>
+      <BtnOutline onClick={() => navigate("/services")}>Our Services</BtnOutline>
+    </div>
+
+    {/* Inline stats row */}
+    <div style={{ display:"flex", gap:28, marginTop:44, paddingTop:28,
+      borderTop:"1px solid rgba(255,255,255,.08)" }}>
+      {[["12K+","Happy Travelers"],["48+","Destinations"],["4.9★","Client Rating"]].map(([n,l],i,a) => (
+        <React.Fragment key={l}>
+          <div style={{ display:"flex", flexDirection:"column", gap:2 }}>
+            <span style={{ fontFamily:"'Anybody',sans-serif", color:C.or,
+              fontSize:26, fontWeight:900, lineHeight:1 }}>{n}</span>
+            <span style={{ fontSize:11, color:"rgba(255,255,255,.4)" }}>{l}</span>
           </div>
-          <div style={{ display:"flex", flexDirection:"column", alignItems:"flex-end", gap:12 }}>
-            <svg className="plane-float" style={{ width:180, height:"auto", filter:`drop-shadow(0 8px 32px rgba(242,92,39,.5))` }} viewBox="0 0 240 200">
-              <path d="M220 90 L160 80 L130 20 L110 20 L120 80 L60 72 L45 52 L30 52 L38 82 L20 85 L20 95 L38 98 L30 128 L45 128 L60 108 L120 100 L110 160 L130 160 L160 100 L220 90 Z" fill={C.or}/>
-            </svg>
-            {[["12K+","Happy Travelers"],["48+","Destinations"],["4.9★","Client Satisfaction"]].map(([n,l]) => (
-              <div key={l} style={{ background:"rgba(255,255,255,.08)", backdropFilter:"blur(14px)", border:"1px solid rgba(255,255,255,.15)", borderRadius:10, padding:"14px 20px", display:"flex", alignItems:"center", gap:16, minWidth:200 }}>
-                <div style={{ fontFamily:"'Anybody',sans-serif", color:"#fff", fontSize:28, fontWeight:900 }}><span style={{ color:C.or }}>{n}</span></div>
-                <div style={{ color:"rgba(255,255,255,.52)", fontSize:12 }}>{l}</div>
-              </div>
-            ))}
-          </div>
+          {i < a.length-1 && <div style={{ width:1, background:"rgba(255,255,255,.1)", alignSelf:"stretch" }}/>}
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
+
+  {/* RIGHT — destination image collage */}
+  <div style={{ padding:"40px 48px 40px 16px", display:"grid",
+    gridTemplateColumns:"1fr 1fr", gridTemplateRows:"1fr 1fr", gap:10, zIndex:2 }}>
+    
+    {/* Tall card */}
+    <div style={{ gridRow:"1/3", borderRadius:16, overflow:"hidden", position:"relative" }}>
+      <img src={ASSETS.indonesia.nusaPenida} alt="Nusa Penida"
+        style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
+      <div style={{ position:"absolute", inset:0,
+        background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 50%)" }}/>
+      <div style={{ position:"absolute", top:14, right:14,
+        background:"rgba(254,205,42,.15)", border:"1px solid rgba(254,205,42,.35)",
+        borderRadius:99, padding:"4px 10px", fontSize:10, fontWeight:600,
+        color:C.sun, display:"flex", alignItems:"center", gap:4,
+        fontFamily:"'Epilogue',sans-serif" }}>
+        <span style={{ width:5, height:5, background:C.sun, borderRadius:"50%" }}/>
+        Verified
+      </div>
+      <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"16px 18px" }}>
+        <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
+          color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:2 }}>Indonesia</div>
+        <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:15, fontWeight:900,
+          color:"#fff" }}>Nusa Penida</div>
+        <div style={{ fontSize:11, color:"rgba(255,255,255,.5)" }}>Bali, Indonesia</div>
+      </div>
+    </div>
+
+    {/* Small cards */}
+    {[
+      { img:ASSETS.turkey.cappadocia, cat:"Turkey", name:"Cappadocia", sub:"Central Anatolia" },
+      { img:ASSETS.japan.mtFuji1,     cat:"Japan",  name:"Mt. Fuji",   sub:"Shizuoka, Japan" },
+    ].map((d) => (
+      <div key={d.name} style={{ borderRadius:16, overflow:"hidden", position:"relative" }}>
+        <img src={d.img} alt={d.name} style={{ width:"100%", height:"100%", objectFit:"cover" }}/>
+        <div style={{ position:"absolute", inset:0,
+          background:"linear-gradient(to top,rgba(2,28,65,.85) 0%,transparent 55%)" }}/>
+        <div style={{ position:"absolute", bottom:0, left:0, right:0, padding:"12px 14px" }}>
+          <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:8, fontWeight:800,
+            color:C.or, textTransform:"uppercase", letterSpacing:1, marginBottom:1 }}>{d.cat}</div>
+          <div style={{ fontFamily:"'Anybody',sans-serif", fontSize:14, fontWeight:900,
+            color:"#fff" }}>{d.name}</div>
+          <div style={{ fontSize:10, color:"rgba(255,255,255,.5)" }}>{d.sub}</div>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       <Marquee />
       <SearchBar />
