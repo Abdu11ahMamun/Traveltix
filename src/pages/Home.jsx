@@ -133,28 +133,123 @@ export default function Home() {
       <SearchBar />
 
       {/* ── WHY CHOOSE ── */}
-      <section style={{ padding:"88px 60px", background:C.lace }}>
-        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:52, gap:32 }}>
-          <div><Eyebrow txt="Why Choose Us"/><h2 style={{ fontFamily:"'Anybody',sans-serif", fontSize:44, fontWeight:900, color:C.navy }}>Why Choose <em style={{ color:C.or, fontStyle:"normal" }}>Traveltix</em></h2></div>
-          <p style={{ color:"#5a6a7a", fontSize:14, maxWidth:380, lineHeight:1.85 }}>High-class service from visa processing to arrival — making your journey smooth and memorable.</p>
+     {/* ── WHY CHOOSE ── */}
+{/* ── WHY CHOOSE ── */}
+  <section style={{ background:"#010f1f", padding:"96px 60px", position:"relative", overflow:"hidden" }}>
+
+    {/* dot grid */}
+    <div style={{ position:"absolute", inset:0, backgroundImage:"radial-gradient(rgba(255,255,255,.025) 1px,transparent 1px)", backgroundSize:"32px 32px", pointerEvents:"none" }}/>
+    {/* glows */}
+    <div style={{ position:"absolute", top:"-120px", right:"-60px", width:500, height:500, background:"radial-gradient(circle,rgba(242,92,39,.07) 0%,transparent 60%)", pointerEvents:"none" }}/>
+    <div style={{ position:"absolute", bottom:"-100px", left:"10%", width:400, height:400, background:"radial-gradient(circle,rgba(161,219,241,.04) 0%,transparent 65%)", pointerEvents:"none" }}/>
+
+    {/* top row */}
+    <div style={{ position:"relative", zIndex:2, display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:64, gap:40 }}>
+      <div>
+        <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:14 }}>
+          <div style={{ width:28, height:1, background:C.or }}/>
+          <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:10, fontWeight:600, color:C.or, textTransform:"uppercase", letterSpacing:3 }}>Why Choose Us</span>
         </div>
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:24 }}>
-          {[
-            { t:"High End Care from Start to Finish", p:"Expertise in everything from challenging visa applications to documentations, ticket bookings and travel counseling." },
-            { t:"Personalized Counseling", p:"Professionalism and care at every step, from timely communication to seamless booking management." },
-            { t:"Trust and Transparency", p:"Clear, honest advice and upfront pricing. No surprises and no hidden fees." },
-          ].map((c,i) => (
-            <div key={i} className="card-wrap" style={{ background:"#fff", borderRadius:12, padding:"34px 26px", border:"1px solid rgba(2,28,65,.07)", transition:"all .3s", position:"relative", overflow:"hidden" }}
-              onMouseEnter={e=>{ e.currentTarget.style.transform="translateY(-6px)"; e.currentTarget.style.boxShadow="0 18px 48px rgba(2,28,65,.1)"; }}
-              onMouseLeave={e=>{ e.currentTarget.style.transform="none"; e.currentTarget.style.boxShadow="none"; }}>
-              <div className="card-topbar"/>
-              <div style={{ width:28, height:3, background:C.or, borderRadius:2, marginBottom:14 }}/>
-              <h4 style={{ fontFamily:"'Anybody',sans-serif", fontSize:18, fontWeight:900, color:C.navy, marginBottom:10, lineHeight:1.2 }}>{c.t}</h4>
-              <p style={{ fontSize:13, color:"#5a6a7a", lineHeight:1.85 }}>{c.p}</p>
+        <h2 style={{ fontFamily:"'Anybody',sans-serif", fontSize:52, fontWeight:900, color:"#fff", lineHeight:.92, letterSpacing:-2 }}>
+          Why Choose<br/><em style={{ color:C.or, fontStyle:"normal" }}>Traveltix</em>
+        </h2>
+      </div>
+      <div style={{ maxWidth:340, textAlign:"right" }}>
+        <p style={{ fontFamily:"'Epilogue',sans-serif", fontSize:14, fontWeight:300, color:"rgba(255,255,255,.4)", lineHeight:1.8, marginBottom:20 }}>
+          High-class service from visa processing to arrival — making your journey smooth and unforgettable.
+        </p>
+        <button
+          onMouseEnter={e => { e.currentTarget.style.background = C.or; e.currentTarget.style.color = "#fff"; }}
+          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = C.or; }}
+          onClick={() => navigate("/services")}
+          style={{ fontFamily:"'Anybody',sans-serif", fontSize:10, fontWeight:800, color:C.or, background:"transparent", border:`1px solid rgba(242,92,39,.35)`, padding:"10px 22px", borderRadius:4, cursor:"pointer", textTransform:"uppercase", letterSpacing:1, display:"inline-flex", alignItems:"center", gap:8, transition:"all .2s" }}>
+          Explore Services →
+        </button>
+      </div>
+    </div>
+
+    {/* cards */}
+    <div style={{ position:"relative", zIndex:2, display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:2, background:"rgba(255,255,255,.04)", borderRadius:20, overflow:"hidden", border:"1px solid rgba(255,255,255,.06)" }}>
+      {[
+        { n:"01", icon:"🛡", tag:"End-to-end service", t:"High End Care from Start to Finish", p:"Expertise in everything from challenging visa applications to documentations, ticket bookings and travel counseling." },
+        { n:"02", icon:"🤝", tag:"Tailored for you",   t:"Personalized Counseling",            p:"Professionalism and care at every step, from timely communication to seamless booking management." },
+        { n:"03", icon:"👁", tag:"No surprises",       t:"Trust and Transparency",             p:"Clear, honest advice and upfront pricing. No surprises and no hidden fees — ever." },
+      ].map((c, i) => (
+        <div key={i}
+          style={{ background:"#010f1f", padding:"40px 32px 36px", position:"relative", overflow:"hidden", cursor:"default", transition:"background .4s" }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = "#0a1f3d";
+            e.currentTarget.querySelector(".ctop").style.transform = "scaleX(1)";
+            e.currentTarget.querySelector(".cicon").style.background = "rgba(242,92,39,.12)";
+            e.currentTarget.querySelector(".cicon").style.borderColor = "rgba(242,92,39,.3)";
+            e.currentTarget.querySelector(".cicon").style.transform = "scale(1.05)";
+            e.currentTarget.querySelector(".ctag").style.color = C.or;
+            e.currentTarget.querySelector(".cbody").style.color = "rgba(255,255,255,.6)";
+            e.currentTarget.querySelector(".clink").style.color = C.or;
+            e.currentTarget.querySelector(".clink").style.gap = "10px";
+            e.currentTarget.querySelector(".cdot").style.background = C.or;
+            e.currentTarget.querySelector(".cfoot").style.borderColor = "rgba(242,92,39,.15)";
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = "#010f1f";
+            e.currentTarget.querySelector(".ctop").style.transform = "scaleX(0)";
+            e.currentTarget.querySelector(".cicon").style.background = "rgba(255,255,255,.03)";
+            e.currentTarget.querySelector(".cicon").style.borderColor = "rgba(255,255,255,.08)";
+            e.currentTarget.querySelector(".cicon").style.transform = "scale(1)";
+            e.currentTarget.querySelector(".ctag").style.color = "rgba(255,255,255,.25)";
+            e.currentTarget.querySelector(".cbody").style.color = "rgba(255,255,255,.4)";
+            e.currentTarget.querySelector(".clink").style.color = "rgba(255,255,255,.25)";
+            e.currentTarget.querySelector(".clink").style.gap = "6px";
+            e.currentTarget.querySelector(".cdot").style.background = "rgba(255,255,255,.1)";
+            e.currentTarget.querySelector(".cfoot").style.borderColor = "rgba(255,255,255,.05)";
+          }}
+        >
+          {/* orange sweep top border */}
+          <div className="ctop" style={{ position:"absolute", top:0, left:0, right:0, height:2, background:`linear-gradient(to right,${C.or},rgba(242,92,39,.3))`, transform:"scaleX(0)", transformOrigin:"left", transition:"transform .5s cubic-bezier(.22,1,.36,1)" }}/>
+
+          {/* ghost number */}
+          <div style={{ position:"absolute", top:20, right:24, fontFamily:"'Anybody',sans-serif", fontSize:80, fontWeight:900, color:"rgba(255,255,255,.03)", lineHeight:1, letterSpacing:-3, pointerEvents:"none" }}>{c.n}</div>
+
+          {/* icon */}
+          <div className="cicon" style={{ width:56, height:56, borderRadius:16, border:"1px solid rgba(255,255,255,.08)", background:"rgba(255,255,255,.03)", display:"flex", alignItems:"center", justifyContent:"center", marginBottom:24, transition:"all .4s cubic-bezier(.22,1,.36,1)", fontSize:24 }}>{c.icon}</div>
+
+          {/* tag */}
+          <div className="ctag" style={{ fontFamily:"'Epilogue',sans-serif", fontSize:9, fontWeight:700, color:"rgba(255,255,255,.25)", textTransform:"uppercase", letterSpacing:2, marginBottom:12, display:"flex", alignItems:"center", gap:8, transition:"color .3s" }}>
+            <div style={{ width:16, height:1, background:"currentColor" }}/>
+            {c.tag}
+          </div>
+
+          <h4 style={{ fontFamily:"'Anybody',sans-serif", fontSize:20, fontWeight:900, color:"#fff", lineHeight:1.1, letterSpacing:"-.5px", marginBottom:14 }}>{c.t}</h4>
+
+          <p className="cbody" style={{ fontFamily:"'Epilogue',sans-serif", fontSize:13, fontWeight:300, color:"rgba(255,255,255,.4)", lineHeight:1.85, transition:"color .3s" }}>{c.p}</p>
+
+          {/* footer */}
+          <div className="cfoot" style={{ marginTop:28, paddingTop:20, borderTop:"1px solid rgba(255,255,255,.05)", display:"flex", alignItems:"center", justifyContent:"space-between", transition:"border-color .3s" }}>
+            <div className="clink" style={{ fontFamily:"'Epilogue',sans-serif", fontSize:11, fontWeight:600, color:"rgba(255,255,255,.25)", display:"flex", alignItems:"center", gap:6, transition:"color .3s, gap .3s" }}>
+              Learn more
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
-          ))}
+            <div className="cdot" style={{ width:6, height:6, borderRadius:"50%", background:"rgba(255,255,255,.1)", transition:"background .3s" }}/>
+          </div>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* stats strip */}
+    <div style={{ position:"relative", zIndex:2, display:"grid", gridTemplateColumns:"repeat(4,1fr)", marginTop:40, border:"1px solid rgba(255,255,255,.05)", borderRadius:12, overflow:"hidden" }}>
+      {[["12K+","Happy Travelers"],["48+","Destinations"],["10+","Years Expertise"],["98%","Satisfaction Rate"]].map(([n,l],i,a) => (
+        <div key={l}
+          style={{ padding:"20px 0", display:"flex", flexDirection:"column", alignItems:"center", gap:4, borderRight: i < a.length-1 ? "1px solid rgba(255,255,255,.05)" : "none", background:"rgba(255,255,255,.02)", transition:"background .2s" }}
+          onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,.04)"}
+          onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,.02)"}
+        >
+          <span style={{ fontFamily:"'Anybody',sans-serif", fontSize:24, fontWeight:900, color:C.or, lineHeight:1 }}>{n}</span>
+          <span style={{ fontFamily:"'Epilogue',sans-serif", fontSize:10, color:"rgba(255,255,255,.3)", textTransform:"uppercase", letterSpacing:.8 }}>{l}</span>
+        </div>
+      ))}
+    </div>
+
+  </section>
 
      {/* Replace <WavyPattern/> with brand pattern divider */}
 <div style={{
