@@ -68,7 +68,7 @@ export default function Home() {
   <div style={{ position:"absolute", right:"-20px", top:"50%", transform:"translateY(-54%)", fontFamily:"'Anybody',sans-serif", fontSize:"clamp(110px,13vw,190px)", fontWeight:900, fontStyle:"italic", color:"transparent", WebkitTextStroke:"1px rgba(255,255,255,.04)", lineHeight:1, letterSpacing:"-6px", pointerEvents:"none", whiteSpace:"nowrap", zIndex:1 }}>TRAVEL</div>
 
   {/* ── BODY ── */}
-  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:150  }}>
+  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:60  }}>
     {/* CENTER — eyebrow, headline, sub, buttons */}
  {/* CENTER — eyebrow, headline, sub, buttons */}
   <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"flex-end" }}>
@@ -114,7 +114,7 @@ export default function Home() {
   </div>
 
   {/* ── STATS BAR ── */}
-  <div style={{ position:"relative", zIndex:3, display:"flex", alignItems:"stretch", borderTop:"1px solid rgba(255,255,255,.06)", marginTop:28 }}>
+  <div style={{ position:"relative", zIndex:3, display:"flex", alignItems:"stretch", borderTop:"1px solid rgba(255,255,255,.06)", marginTop:-35 }}>
     {[["12K+","Happy Travelers"],["48+","Destinations"],["10+","Years Expertise"],["98%","Satisfaction Rate"]].map(([n,l]) => (
       <div key={l} style={{ flex:1, padding:"18px 0", display:"flex", flexDirection:"column", alignItems:"center", gap:3, borderRight:"1px solid rgba(255,255,255,.06)" }}>
         <span style={{ fontFamily:"'Anybody',sans-serif", fontSize:22, fontWeight:900, color:C.or, lineHeight:1 }}>{n}</span>
