@@ -68,7 +68,7 @@ export default function Home() {
   <div style={{ position:"absolute", right:"-20px", top:"50%", transform:"translateY(-54%)", fontFamily:"'Anybody',sans-serif", fontSize:"clamp(110px,13vw,190px)", fontWeight:900, fontStyle:"italic", color:"transparent", WebkitTextStroke:"1px rgba(255,255,255,.04)", lineHeight:1, letterSpacing:"-6px", pointerEvents:"none", whiteSpace:"nowrap", zIndex:1 }}>TRAVEL</div>
 
   {/* ── BODY ── */}
-  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:60  }}>
+  <div className="anim-slideup" style={{ flex:1, display:"flex", flexDirection:"column", padding:"0 60px", position:"relative", zIndex:3, paddingTop:150  }}>
     {/* CENTER — eyebrow, headline, sub, buttons */}
  {/* CENTER — eyebrow, headline, sub, buttons */}
   <div style={{ flex:1, display:"flex", flexDirection:"column", justifyContent:"flex-end" }}>
@@ -81,11 +81,11 @@ export default function Home() {
 
     {/* h1 */}
    <h1 style={{ fontFamily:"'Anybody',sans-serif", fontSize:"clamp(52px,5.2vw,76px)", fontWeight:900, color:"#fff", lineHeight:.9, letterSpacing:"-2.5px", marginBottom:28 }}>
-    We Handle<br/>
-    <span style={{ color:C.or }}>Hassles.</span><br/>
-    <span style={{ color:"transparent", WebkitTextStroke:"2px rgba(255,255,255,.2)", fontStyle:"italic" }}>Troubleless</span><br/>
-    <span style={{ color:C.sky }}>Travel.</span>
-  </h1>
+      We Handle<br/>
+      <span style={{ color:C.or }}>Hassles.</span><br/>
+      <span style={{ color:"#fff", fontStyle:"italic" }}>Troubleless</span><br/>
+      <span style={{ color:C.sky }}>Travel.</span>
+    </h1>
 
     <p style={{ fontFamily:"'Epilogue',sans-serif", fontSize:13, fontWeight:300, color:"rgba(255,255,255,.45)", lineHeight:1.85, marginBottom:24, maxWidth:400 }}>
       Traveltix delivers white-glove travel expertise — visas, flights, hotels and beyond, handled with precision and care so you arrive stress-free.
